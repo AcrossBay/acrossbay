@@ -1,23 +1,20 @@
 import "./globals.css";
 
+export const metadata = {
+  title: "AcrossBay",
+  description: "Coastal lifestyle — minimal design.",
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
-          rel="stylesheet"
-        />
-        <title>AcrossBay — Lifestyle</title>
-        <meta name="description" content="AcrossBay — coastal lifestyle & essentials" />
-      </head>
-      <body className="bg-gray-50 text-gray-900">
-        <header className="bg-white/90 backdrop-blur shadow-sm">
-          <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
+      <body className="min-h-screen">
+        <header className="bg-white/70 backdrop-blur shadow-sm">
+          <div className="mx-auto max-w-5xl px-6 py-4 flex items-center justify-between">
             <a href="/" className="text-2xl font-bold tracking-tight">
-              AcrossBay <span className="align-middle">🌊</span>
+              AcrossBay <span className="ml-1">🌊</span>
             </a>
-            <nav className="flex gap-6 text-sm">
+            <nav className="space-x-6 text-sm">
               <a href="/" className="hover:text-blue-600">Home</a>
               <a href="/discover" className="hover:text-blue-600">Discover</a>
               <a href="/about" className="hover:text-blue-600">About</a>
@@ -26,12 +23,14 @@ export default function RootLayout({ children }) {
           </div>
         </header>
 
-        <main className="mx-auto max-w-6xl px-6">{children}</main>
+        <main className="mx-auto max-w-5xl px-6 py-12">
+          {children}
+        </main>
 
-        <footer className="mt-16 border-t bg-white">
-          <div className="mx-auto max-w-6xl px-6 py-8 text-sm text-gray-600 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-            <p>© {new Date().getFullYear()} AcrossBay. All rights reserved.</p>
-            <p className="text-gray-500">Coastal lifestyle. Minimal design.</p>
+        <footer className="border-t bg-white/60">
+          <div className="mx-auto max-w-5xl px-6 py-6 text-sm text-slate-500 flex items-center justify-between">
+            <p>© {new Date().getFullYear()} AcrossBay. Coastal lifestyle, minimal design.</p>
+            <a href="/newsletter" className="hover:text-blue-600">Join our newsletter →</a>
           </div>
         </footer>
       </body>

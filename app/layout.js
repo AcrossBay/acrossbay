@@ -1,38 +1,24 @@
 import "./globals.css";
+import { Nunito_Sans } from "next/font/google";
 
-export const metadata = {
-  title: "AcrossBay",
-  description: "Coastal lifestyle — minimal design.",
-};
+const nunito = Nunito_Sans({ subsets: ["latin"], weight: ["300", "400", "600"], display: "swap" });
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="min-h-screen">
-        <header className="bg-white/70 backdrop-blur shadow-sm">
-          <div className="mx-auto max-w-5xl px-6 py-4 flex items-center justify-between">
-            <a href="/" className="text-2xl font-bold tracking-tight">
-              AcrossBay <span className="ml-1">🌊</span>
-            </a>
-            <nav className="space-x-6 text-sm">
-              <a href="/" className="hover:text-blue-600">Home</a>
-              <a href="/discover" className="hover:text-blue-600">Discover</a>
-              <a href="/about" className="hover:text-blue-600">About</a>
-              <a href="/contact" className="hover:text-blue-600">Contact</a>
-            </nav>
-          </div>
+      <body className={`${nunito.className} bg-gray-50 text-gray-900`}>
+        <header className="bg-white shadow-md py-4 px-6 flex justify-between items-center">
+          <h1 className="text-xl font-semibold">AcrossBay 🌊</h1>
+          <nav className="space-x-6 text-sm">
+            <a href="/" className="hover:text-blue-600">Home</a>
+            <a href="/discover" className="hover:text-blue-600">Discover</a>
+            <a href="/about" className="hover:text-blue-600">About</a>
+            <a href="/contact" className="hover:text-blue-600">Contact</a>
+          </nav>
         </header>
-
-        <main className="mx-auto max-w-5xl px-6 py-12">
+        <main className="p-8 flex justify-center items-start min-h-screen">
           {children}
         </main>
-
-        <footer className="border-t bg-white/60">
-          <div className="mx-auto max-w-5xl px-6 py-6 text-sm text-slate-500 flex items-center justify-between">
-            <p>© {new Date().getFullYear()} AcrossBay. Coastal lifestyle, minimal design.</p>
-            <a href="/newsletter" className="hover:text-blue-600">Join our newsletter →</a>
-          </div>
-        </footer>
       </body>
     </html>
   );

@@ -1,14 +1,9 @@
 export default function HomePage() {
   return (
-    <main style={{
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      height: '100vh',
-      backgroundColor: '#f5f8fa',
-      fontFamily: 'sans-serif'
-    }}>
-      <h1>AcrossBay is Live 🚀</h1>
+    <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-sky-50 to-indigo-100">
+      <h1 className="text-4xl font-semibold text-gray-800">
+        AcrossBay is Live 🚀
+      </h1>
     </main>
   );
 }

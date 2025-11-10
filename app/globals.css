@@ -1,12 +1,37 @@
 /* redeploy */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-gradient-to-b from-sky-50 to-white;
+/* Base look & feel */
+:root {
+  --radius: 12px;
 }
 
-a {
-  @apply underline underline-offset-2 decoration-slate-300 hover:decoration-blue-400;
+html, body {
+  height: 100%;
+}
+
+body {
+  @apply bg-gradient-to-b from-sky-50 to-white text-slate-900;
+}
+
+/* Tipografia base */
+h1, h2, h3 {
+  @apply tracking-tight text-slate-900;
+}
+
+h1 { @apply text-3xl md:text-5xl font-semibold; }
+h2 { @apply text-2xl md:text-3xl font-semibold; }
+h3 { @apply text-xl md:text-2xl font-semibold; }
+
+p { @apply text-slate-700 leading-relaxed; }
+
+/* Link */
+a { @apply underline underline-offset-2 decoration-slate-300 hover:decoration-blue-400; }
+
+/* Piccoli helper */
+.card {
+  @apply rounded-2xl bg-white/70 backdrop-blur shadow-sm ring-1 ring-slate-200/70;
 }

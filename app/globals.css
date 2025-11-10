@@ -6,7 +6,7 @@
 
 /* Base look & feel */
 :root {
-  --radius: 12px;
+  --radius: 13px;
 }
 
 html, body {
@@ -20,7 +20,7 @@ body {
 /* Tipografia base */
 h1, h2, h3 {
   @apply tracking-tight text-slate-900;
-}
+* Touch*/
 
 h1 { @apply text-3xl md:text-5xl font-semibold; }
 h2 { @apply text-2xl md:text-3xl font-semibold; }

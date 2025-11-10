@@ -130,6 +130,80 @@ export default function DiscoverPage() {
           </div>
         </div>
       </section>
+             {/* Gift Ideas Section */}
+<section className="py-14 bg-white border-t border-gray-100">
+  <div className="max-w-6xl mx-auto">
+    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+      🎄 Gift Ideas 2025
+    </h2>
+    <p className="text-lg text-gray-600 mb-10 max-w-2xl">
+      Handpicked inspirations for thoughtful giving. From smart mini gadgets to cozy home accents — all selected from trusted marketplaces worldwide.
+    </p>
+
+    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {[
+        {
+          title: "Smart Mug Warmer",
+          desc: "Keep your coffee at the perfect temperature all morning.",
+          price: "£22–£34",
+          link: "#",
+          img: "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1600&auto=format&fit=crop",
+          badge: "Popular",
+        },
+        {
+          title: "Handwoven Blanket",
+          desc: "Made in Portugal with organic cotton and neutral tones.",
+          price: "£45–£75",
+          link: "#",
+          img: "https://images.unsplash.com/photo-1615874959474-d609969a20ed?q=80&w=1600&auto=format&fit=crop",
+          badge: "Cozy pick",
+        },
+        {
+          title: "Mini Bluetooth Speaker",
+          desc: "Small, elegant and powerful — ideal for travel or gifting.",
+          price: "£18–£29",
+          link: "#",
+          img: "https://images.unsplash.com/photo-1585386959984-a41552231693?q=80&w=1600&auto=format&fit=crop",
+          badge: "Gift pick",
+        },
+      ].map((item, i) => (
+        <article
+          key={i}
+          className="bg-white p-5 rounded-2xl shadow hover:shadow-lg hover:scale-[1.02] transition transform"
+        >
+          <div className="relative mb-4">
+            <Image
+              src={item.img}
+              alt={item.title}
+              width={960}
+              height={720}
+              className="w-full h-48 object-cover rounded-xl"
+              priority={i < 2}
+            />
+            {item.badge && (
+              <span className="absolute top-3 left-3 text-xs font-semibold bg-red-600 text-white px-2 py-1 rounded-md">
+                {item.badge}
+              </span>
+            )}
+          </div>
+          <h3 className="text-lg font-semibold">{item.title}</h3>
+          <p className="text-gray-600 mt-1 mb-2">{item.desc}</p>
+          <p className="font-semibold text-teal-700 mb-3">{item.price}</p>
+          <a
+            href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`View ${item.title}`}
+            className="inline-flex items-center justify-center text-sm text-white bg-teal-600 px-4 py-2 rounded-lg hover:bg-teal-700"
+          >
+            View item
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+ 
     </main>
   );
 }

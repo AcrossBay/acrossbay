@@ -1,23 +1,22 @@
 export default function DiscoverPage() {
   return (
-    <div className="space-y-8">
-      <h1 className="text-3xl font-semibold">Discover</h1>
-      <p className="text-slate-600">
-        Una selezione veloce per testare il layout. Sostituiremo con prodotti veri.
+    <section className="space-y-6">
+      <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">Discover</h2>
+      <p className="text-gray-600 max-w-2xl">
+        Selezione curata di pezzi minimal, palette morbide e comfort intelligente.
       </p>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-        {["Linen Tee", "Coastal Hoodie", "Harbor Shorts", "Tide Cap", "Breeze Tote", "Shell Necklace"].map((name, i) => (
-          <div key={i} className="rounded-xl border p-4 bg-white">
-            <div className="aspect-[4/3] rounded-lg bg-slate-100 mb-3" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {Array.from({ length: 6 }).map((_, i) => (
+          <div key={i} className="rounded-2xl border bg-white/70 p-4 hover:shadow-md transition">
+            <div className="aspect-[4/3] rounded-xl bg-gradient-to-br from-sky-100 to-white mb-3" />
             <div className="flex items-center justify-between">
-              <span className="font-medium">{name}</span>
-              <span className="text-sm text-slate-500">€49</span>
+              <span className="font-medium">Item #{i + 1}</span>
+              <a href="#" className="text-sm text-sky-700 hover:underline">View</a>
             </div>
-            <a href="#" className="mt-2 inline-block text-blue-600">Dettagli →</a>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

@@ -2,8 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Tocco base per il look */
+/* Base style */
 body {
-  @apply bg-gradient-to-b from-sky-50 to-white text-slate-900;
+  @apply bg-gradient-to-b from-sky-50 to-white;
 }
-a { @apply underline underline-offset-2 decoration-slate-300 hover:decoration-blue-400; }
+
+/* Link styling */
+a {
+  @apply underline underline-offset-2 decoration-slate-300 hover:decoration-blue-400;
+}

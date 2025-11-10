@@ -1,44 +1,40 @@
-import "./globals.css";
-import { Inter } from "next/font/google";
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["300", "400", "600", "700"],
-  display: "swap",
-});
-
-export default function RootLayout({ children }) {
+export default function HomePage() {
   return (
-    <html lang="en" className={inter.className}>
-      <body className="text-slate-900 antialiased">
-        {/* Header */}
-        <header className="sticky top-0 z-30 backdrop-blur bg-white/60 border-b border-slate-200/60">
-          <nav className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
-            <a href="/" className="font-semibold tracking-tight">
-              AcrossBay <span aria-hidden>🌊</span>
-            </a>
-            <div className="flex items-center gap-6 text-sm">
-              <a href="/" className="hover:text-blue-600">Home</a>
-              <a href="/discover" className="hover:text-blue-600">Discover</a>
-              <a href="/about" className="hover:text-blue-600">About</a>
-              <a href="/contact" className="hover:text-blue-600">Contact</a>
-            </div>
-          </nav>
-        </header>
+    <section className="space-y-8">
+      <div className="card p-8 md:p-10">
+        <h1>Live the Coastal Lifestyle</h1>
+        <p className="mt-4 max-w-2xl">
+          Essenziali puliti, materiali comodi, ispirazione da mare e vento.
+          AcrossBay unisce minimal design e vibe mediterranea.
+        </p>
+        <div className="mt-6 flex gap-4">
+          <a href="/discover" className="no-underline">
+            <span className="inline-flex items-center rounded-full px-4 py-2 bg-slate-900 text-white hover:opacity-90">
+              Explore Collections
+            </span>
+          </a>
+          <a href="/about" className="no-underline">
+            <span className="inline-flex items-center rounded-full px-4 py-2 bg-white ring-1 ring-slate-300 hover:bg-slate-50">
+              Our Story
+            </span>
+          </a>
+        </div>
+      </div>
 
-        {/* Main */}
-        <main className="max-w-5xl mx-auto px-4 py-10">
-          {children}
-        </main>
-
-        {/* Footer */}
-        <footer className="border-t border-slate-200/70">
-          <div className="max-w-5xl mx-auto px-4 py-8 text-sm text-slate-600 flex items-center justify-between">
-            <p>© {new Date().getFullYear()} AcrossBay. All rights reserved.</p>
-            <p>Coastal lifestyle. Minimal design.</p>
-          </div>
-        </footer>
-      </body>
-    </html>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="card p-6">
+          <h3>Capsule</h3>
+          <p className="mt-2">Palette morbide, tessuti naturali, easy layering.</p>
+        </div>
+        <div className="card p-6">
+          <h3>Journal</h3>
+          <p className="mt-2">Storie brevi di viaggi, surf spots e design semplice.</p>
+        </div>
+        <div className="card p-6">
+          <h3>Newsletter</h3>
+          <p className="mt-2">Una mail al mese. Niente spam.</p>
+        </div>
+      </div>
+    </section>
   );
 }

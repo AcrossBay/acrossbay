@@ -12,6 +12,34 @@ export default function ContactPage() {
           massi@across-bay.com
         </a>{" "}
         e ti risponderemo presto.
+          <div className="text-sm text-gray-500">
+          <form className="w-full max-w-md mt-4">
+  <input
+    type="text"
+    placeholder="Il tuo nome"
+    className="w-full mb-3 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+    required
+  />
+  <input
+    type="email"
+    placeholder="La tua email"
+    className="w-full mb-3 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+    required
+  />
+  <textarea
+    placeholder="Il tuo messaggio"
+    className="w-full mb-3 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+    rows="4"
+    required
+  ></textarea>
+  <button
+    type="submit"
+    className="w-full bg-teal-600 text-white font-semibold py-3 rounded-lg hover:bg-teal-700 transition"
+  >
+    Invia messaggio
+  </button>
+</form>
+
       </p>
       <div className="text-sm text-gray-500">
         AcrossBay © {new Date().getFullYear()} – Tutti i diritti riservati.

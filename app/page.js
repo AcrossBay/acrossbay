@@ -1,40 +1,19 @@
-export default function HomePage() {
+export default function Home() {
   return (
-    <section className="space-y-8">
-      <div className="card p-8 md:p-10">
-        <h1>Live the Coastal Lifestyle</h1>
-        <p className="mt-4 max-w-2xl">
-          Essenziali puliti, materiali comodi, ispirazione da mare e vento.
-          AcrossBay unisce minimal design e vibe mediterranea.
-        </p>
-        <div className="mt-6 flex gap-4">
-          <a href="/discover" className="no-underline">
-            <span className="inline-flex items-center rounded-full px-4 py-2 bg-slate-900 text-white hover:opacity-90">
-              Explore Collections
-            </span>
-          </a>
-          <a href="/about" className="no-underline">
-            <span className="inline-flex items-center rounded-full px-4 py-2 bg-white ring-1 ring-slate-300 hover:bg-slate-50">
-              Our Story
-            </span>
-          </a>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="card p-6">
-          <h3>Capsule</h3>
-          <p className="mt-2">Palette morbide, tessuti naturali, easy layering.</p>
-        </div>
-        <div className="card p-6">
-          <h3>Journal</h3>
-          <p className="mt-2">Storie brevi di viaggi, surf spots e design semplice.</p>
-        </div>
-        <div className="card p-6">
-          <h3>Newsletter</h3>
-          <p className="mt-2">Una mail al mese. Niente spam.</p>
-        </div>
-      </div>
+    <section className="flex flex-col items-center justify-center text-center mt-20 px-6">
+      <h1 className="text-4xl font-bold text-teal-800 mb-4">
+        Live the Coastal Lifestyle
+      </h1>
+      <p className="text-gray-600 max-w-2xl mb-10">
+        AcrossBay unisce stile e semplicità. Prodotti essenziali ispirati al mare
+        e alla vita quotidiana, con un design pulito.
+      </p>
+      <a
+        href="/discover"
+        className="bg-teal-700 text-white px-6 py-3 rounded-full hover:bg-teal-800 transition"
+      >
+        Esplora la Collezione
+      </a>
     </section>
   );
 }

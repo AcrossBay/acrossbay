@@ -39,11 +39,8 @@ export default function ContactPage() {
     Invia messaggio
   </button>
 </form>
-
-      </p>
+      
       <div className="text-sm text-gray-500">
         AcrossBay © {new Date().getFullYear()} – Tutti i diritti riservati.
       </div>
     </main>
-  );
-}

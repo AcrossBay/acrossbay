@@ -6,7 +6,6 @@ export const metadata = {
 };
 
 export default function DiscoverPage() {
-  // NOTE: sostituisci link "#" con i tuoi link affiliati (eBay/Amazon/…)
   const holiday = [
     {
       title: "Pocket Projector — Holiday Edition",
@@ -69,7 +68,19 @@ export default function DiscoverPage() {
         </p>
       </header>
 
-      {/* 🎄 Holiday Trends 2025 */}
+      {/* Filter Bar */}
+      <div className="max-w-6xl mx-auto mb-10 flex flex-wrap gap-3">
+        {["All", "Under £50", "Smart Tech", "Home & Living", "Accessories"].map((f, i) => (
+          <button
+            key={i}
+            className="px-4 py-2 text-sm rounded-full border border-gray-300 hover:bg-teal-600 hover:text-white transition"
+          >
+            {f}
+          </button>
+        ))}
+      </div>
+
+      {/* Holiday Trends */}
       <section className="py-14 bg-teal-50/60">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
@@ -85,9 +96,8 @@ export default function DiscoverPage() {
             {holiday.map((item, i) => (
               <article
                 key={i}
-                className="bg-white p-5 rounded-2xl shadow hover:shadow-lg transition"
+                className="bg-white p-5 rounded-2xl shadow hover:shadow-lg hover:scale-[1.02] transition transform"
               >
-                {/* Image + badge */}
                 <div className="relative mb-4">
                   <Image
                     src={item.img}
@@ -103,13 +113,9 @@ export default function DiscoverPage() {
                     </span>
                   )}
                 </div>
-
-                {/* Text */}
                 <h3 className="text-lg font-semibold">{item.title}</h3>
                 <p className="text-gray-600 mt-1 mb-2">{item.desc}</p>
                 <p className="font-semibold text-teal-700 mb-3">{item.price}</p>
-
-                {/* CTA */}
                 <a
                   href={item.link}
                   target="_blank"

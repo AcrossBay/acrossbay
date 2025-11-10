@@ -1,38 +1,18 @@
-"use client";
-import { useEffect, useState } from "react";
-
-export default function Health() {
-  const [font, setFont] = useState("unknown");
-
-  useEffect(() => {
-    try {
-      const f = getComputedStyle(document.body).fontFamily;
-      setFont(f);
-    } catch {}
-  }, []);
-
+export default function Home() {
   return (
-    <main className="min-h-screen p-6 space-y-6">
-      <h1 className="text-2xl font-semibold">AcrossBay — Health Check</h1>
-
-      <div className="grid gap-4 md:grid-cols-3">
-        <div className="p-4 rounded-lg bg-sky-100 border">
-          Tailwind color test (dovrebbe essere azzurro chiaro)
-        </div>
-
-        <div className="p-4 rounded-lg bg-white border shadow">
-          Card style test (bordo + ombra)
-        </div>
-
-        <div className="p-4 rounded-lg border">
-          <p>Font detect:</p>
-          <code className="text-sm">{font}</code>
-        </div>
-      </div>
-
-      <p className="text-sm text-slate-500">
-        Build timestamp: {new Date().toISOString()}
+    <section className="flex flex-col items-center justify-center text-center mt-20 px-6">
+      <h1 className="text-4xl font-bold text-teal-800 mb-4">
+        Live the Coastal Lifestyle
+      </h1>
+      <p className="text-gray-600 max-w-2xl mb-10">
+        AcrossBay unisce stile, semplicità e funzionalità. Scopri prodotti essenziali ispirati al mare e alla vita quotidiana, con un design intelligente e pulito.
       </p>
-    </main>
+      <a
+        href="/discover"
+        className="bg-teal-700 text-white px-6 py-3 rounded-full hover:bg-teal-800 transition"
+      >
+        Esplora la Collezione
+      </a>
+    </section>
   );
 }

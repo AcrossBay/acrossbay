@@ -3,42 +3,45 @@
 import Link from "next/link";
 import Image from "next/image";
 
-const LINKS = [
-  { href: "/",               label: "Home" },
-  { href: "/discover",       label: "Discover" },
-  { href: "/made-in-italy",  label: "Made in Italy" },
-  { href: "/amazon-findz",   label: "Amazon" },
-  { href: "/ebay-finds",     label: "eBay" },
-  { href: "/tiktok-trends",  label: "TikTok" },
-  { href: "/tuscany-virgin", label: "Tuscany" },
-  { href: "/smart-club",     label: "Smart Club" },
-  { href: "/sicily-food",    label: "Sicily Food" },
-  { href: "/contact",        label: "Contact" },
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/discover", label: "Discover" },
+  { href: "/made-in-italy", label: "Made in Italy" },
+  { href: "/amazon-findz", label: "Amazon" },
+  { href: "/ebay-findz", label: "eBay" },
+  { href: "/tiktok", label: "TikTok" },
+  { href: "/tuscany", label: "Tuscany" },
+  { href: "/smart-club", label: "Smart Club" },
+  { href: "/sicily-food", label: "Sicily Food" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full backdrop-blur bg-white/80 border-b border-gray-200 shadow-sm">
-      <div className="mx-auto max-w-6xl px-6 h-20 flex items-center justify-between">
-        {/* Logo singolo */}
-        <Link href="/" className="flex items-center gap-3 font-semibold tracking-tight">
+    <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-md">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
+        {/* Logo + Brand */}
+        <Link href="/" className="flex items-center gap-2">
           <Image
             src="/acrossbay-logo.svg"
-            alt="AcrossBay Logo"
-            width={180}
-            height={60}
-            className="object-contain"
-            onError={(e) => { e.currentTarget.style.display = "none"; }}
+            alt="AcrossBay logo"
+            width={42}
+            height={42}
+            className="inline-block"
           />
+          <span className="text-xl font-semibold tracking-tight text-gray-800">
+            Across<span className="text-sky-600">Bay</span>
+            <sup className="ml-0.5 text-sm text-gray-500">®</sup>
+          </span>
         </Link>
 
-        {/* Menu principale */}
-        <nav className="hidden md:flex gap-6 text-sm font-medium">
-          {LINKS.map((link) => (
+        {/* Navigation */}
+        <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-700">
+          {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-gray-700 hover:text-black transition-colors"
+              className="hover:text-sky-600 transition-colors"
             >
               {link.label}
             </Link>

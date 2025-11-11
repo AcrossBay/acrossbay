@@ -1,5 +1,5 @@
 import "./globals.css";
-import Header from "./components/Header.jsx";
+import Header from "./components/Header";
 
 export const metadata = {
   title: "AcrossBay",
@@ -11,7 +11,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="bg-white text-slate-900 antialiased">
         <Header />
-        {children}
+        <main>{children}</main>
       </body>
     </html>
   );

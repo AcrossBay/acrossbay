@@ -1,17 +1,17 @@
 import "./globals.css";
-import Header from "./components/Header";
+import Header from "./components/Header.jsx";
 
 export const metadata = {
-  title: "AcrossBay – Coastal Lifestyle",
-  description: "Coastal lifestyle meets minimal design.",
+  title: "AcrossBay",
+  description: "Smart finds from trusted marketplaces worldwide",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="bg-gradient-to-b from-sky-50 to-white text-gray-800">
+      <body className="bg-white text-slate-900 antialiased">
         <Header />
-        <main className="pt-20">{children}</main>
+        {children}
       </body>
     </html>
   );

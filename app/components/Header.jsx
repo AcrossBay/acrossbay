@@ -23,20 +23,21 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-white/80 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
-        {/* Brand */}
+        {/* LOGO con marchio registrato */}
         <Link href="/" className="flex items-center gap-1" onClick={() => setOpen(false)}>
-          <Image
-            src="/acrossbay-logo.svg"
-            alt="AcrossBay"
-            width={160}
-            height={28}
-            priority
-          />
-          {/* ® vicino al logo */}
-          <sup className="ml-1 -mt-3 text-xs text-gray-600">®</sup>
+          <div className="flex items-center">
+            <Image
+              src="/acrossbay-logo.svg"
+              alt="AcrossBay Logo"
+              width={200}
+              height={40}
+              priority
+            />
+            <span className="ml-1 text-sm text-gray-600">®</span>
+          </div>
         </Link>
 
-        {/* Desktop nav */}
+        {/* NAV DESKTOP */}
         <nav className="hidden md:flex items-center gap-6 text-[15px]">
           {navLinks.map((l) => (
             <Link
@@ -49,22 +50,20 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Mobile hamburger */}
+        {/* MENU MOBILE */}
         <button
           type="button"
           aria-label="Toggle menu"
           className="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-md border border-gray-200"
           onClick={() => setOpen((v) => !v)}
         >
-          <span className="sr-only">Open menu</span>
-          {/* icona semplice */}
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
             <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="2" />
           </svg>
         </button>
       </div>
 
-      {/* Mobile drawer */}
+      {/* MENU MOBILE A SCOMPARSA */}
       {open && (
         <div className="md:hidden border-t bg-white">
           <nav className="mx-auto flex max-w-6xl flex-col px-4 py-3">

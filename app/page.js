@@ -1,90 +1,80 @@
-import Link from "next/link";
+import Section from "./components/Section";
+import ProductCard from "./components/ProductCard";
 
 export const metadata = {
-  title: "AcrossBay — Smart Lifestyle",
-  description: "Discover and compare unique finds from trusted marketplaces worldwide.",
+  title: "AcrossBay — Coastal Lifestyle",
+  description: "Smart and stylish essentials curated from global marketplaces.",
 };
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-white text-slate-900">
-      {/* Hero section */}
-      <section className="text-center py-16">
-        <h1 className="text-4xl font-semibold text-slate-800 mb-3">
-          Live the Coastal Lifestyle
-        </h1>
-        <p className="text-gray-600">
-          Smart and stylish essentials curated from global marketplaces.
-        </p>
-      </section>
-
-      {/* Smart Made in Italy */}
-      <section className="py-10">
-        <div className="max-w-3xl mx-auto rounded-2xl p-6 bg-teal-50 border border-teal-100">
-          <p className="text-xs uppercase tracking-wide text-teal-700 mb-2">
-            Made in Italy
+    <main className="min-h-screen">
+      {/* HERO compatto e coerente */}
+      <section className="w-full bg-gradient-to-b from-white to-gray-50">
+        <div className="mx-auto max-w-6xl px-6 py-12 md:py-16">
+          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-center">
+            Live the Coastal Lifestyle
+          </h1>
+          <p className="text-gray-600 text-center mt-3 max-w-2xl mx-auto">
+            Smart and stylish essentials curated from global marketplaces.
           </p>
-          <h2 className="text-2xl font-semibold text-slate-900 mb-2">
-            Smart Made in Italy — limited drops, timeless essentials
-          </h2>
-          <p className="text-gray-600 text-sm">
-            Italian craftsmanship meets everyday simplicity: clean design, relaxed fit,
-            verified marketplaces.
-          </p>
-          <div className="mt-4">
-            <Link
-              href="/made-in-italy"
-              className="inline-flex items-center gap-1 text-teal-700 font-medium text-sm hover:underline"
-            >
-              Explore Made in Italy →
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* Discover section */}
-      <section className="py-12">
-        <div className="max-w-5xl mx-auto px-6">
-          <h2 className="text-3xl font-semibold text-slate-800 text-center mb-8">
-            Discover Marketplace Finds
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="p-5 border rounded-xl hover:shadow-md transition">
-              <img
-                src="https://images.unsplash.com/photo-1682708263623-bd6c3e8f3bf4?q=80&w=800&auto=format&fit=crop"
-                alt="Mini Projector"
-                className="rounded-xl mb-3"
-              />
-              <h3 className="font-semibold">Smart Mini Projector</h3>
-              <p className="text-gray-600 text-sm mt-1">
-                Compact and stylish, perfect for cozy movie nights.
-              </p>
-            </div>
-            <div className="p-5 border rounded-xl hover:shadow-md transition">
-              <img
-                src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=800&auto=format&fit=crop"
-                alt="Nordic Lamp"
-                className="rounded-xl mb-3"
-              />
-              <h3 className="font-semibold">Nordic Lamp</h3>
-              <p className="text-gray-600 text-sm mt-1">
-                Warm ambient lighting with a minimal design.
-              </p>
-            </div>
-            <div className="p-5 border rounded-xl hover:shadow-md transition">
-              <img
-                src="https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=800&auto=format&fit=crop"
-                alt="Diffuser"
-                className="rounded-xl mb-3"
-              />
-              <h3 className="font-semibold">Smart Aroma Diffuser</h3>
-              <p className="text-gray-600 text-sm mt-1">
-                Calm your space with a fine, refreshing mist.
-              </p>
-            </div>
-          </div>
+      {/* “Made in Italy” trasformato in card uniforme */}
+      <Section title="Made in Italy" subtitle="Limited drops, timeless essentials">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <ProductCard
+            imageSrc="/images/madeinitaly.jpg"   /* puoi cambiare immagine */
+            imageAlt="Made in Italy"
+            title="Smart Made in Italy"
+            subtitle="Italian craftsmanship meets everyday simplicity: clean design, relaxed fit, verified marketplaces."
+            href="/made-in-italy"
+          />
+          {/* Se vuoi altre due card teaser per armonizzare la griglia */}
+          <ProductCard
+            imageSrc="/images/linen-shirt.jpg"
+            imageAlt="Linen Shirt"
+            title="Linen Shirt"
+            subtitle="Breathable, minimal, coastal look."
+            href="/made-in-italy"
+          />
+          <ProductCard
+            imageSrc="/images/ceramics.jpg"
+            imageAlt="Ceramics"
+            title="Mediterranean Ceramics"
+            subtitle="Warm textures for smart homes."
+            href="/made-in-italy"
+          />
         </div>
-      </section>
+      </Section>
+
+      {/* Discover uniforme con la stessa griglia e card */}
+      <Section title="Discover Marketplace Finds" subtitle="Curated picks from Amazon, eBay and TikTok">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <ProductCard
+            imageSrc="/images/projector.jpg"
+            imageAlt="Mini Projector"
+            title="Smart Mini Projector"
+            subtitle="Compact and stylish, perfect for cozy movie nights."
+            href="/discover"
+          />
+          <ProductCard
+            imageSrc="/images/diffuser.jpg"
+            imageAlt="Aroma Diffuser"
+            title="Smart Aroma Diffuser"
+            subtitle="Calm your space with a fine, refreshing mist."
+            href="/discover"
+          />
+          <ProductCard
+            imageSrc="/images/organizer.jpg"
+            imageAlt="Desk Organizer"
+            title="Magnetic Desk Organizer"
+            subtitle="Minimal workspace, maximum focus."
+            href="/discover"
+          />
+        </div>
+      </Section>
     </main>
   );
 }

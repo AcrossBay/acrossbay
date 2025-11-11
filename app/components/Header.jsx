@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 
 const LINKS = [
   { href: "/", label: "Home" },
@@ -18,28 +17,23 @@ const LINKS = [
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-20 w-full bg-white/70 backdrop-blur border-b">
-      <div className="mx-auto max-w-6xl px-6 h-14 flex items-center justify-between">
-        {/* brand: SOLO UNA VOLTA */}
-        <Link href="/" className="flex items-center gap-2">
-          <Image
-            src="/acrossbay-logo.svg"
-            alt="AcrossBay"
-            width={140}
-            height={28}
-            priority
-            className="h-7 w-auto"
-          />
-          <sup className="text-xs align-super">®</sup>
-          <span className="sr-only">AcrossBay</span>
+    <header className="sticky top-0 z-40 w-full backdrop-blur bg-white/70 border-b">
+      <div className="mx-auto max-w-5xl px-6 flex items-center justify-between h-14">
+        {/* LOGO testo + ® vicino, senza duplicati */}
+        <Link href="/" className="inline-flex items-center gap-1 select-none">
+          <span className="font-semibold tracking-tight text-xl">
+            <span>Across</span>
+            <span className="text-sky-500">Bay</span>
+          </span>
+          <span className="align-top text-[10px] leading-none translate-y-[-6px]">®</span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-5 text-sm">
+        <nav className="hidden md:flex gap-5 text-sm">
           {LINKS.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="text-gray-700 hover:text-gray-900"
+              className="text-gray-600 hover:text-gray-900"
             >
               {l.label}
             </Link>

@@ -12,7 +12,7 @@ const LINKS = [
   { href: "/tuscany-virgin", label: "Tuscany" },
   { href: "/smart-club", label: "Smart Club" },
   { href: "/contact", label: "Contact" },
-  { href: "/sicily-food",label:"sicily-food"},
+  { href: "/sicily-food", label: "Sicily Food" },
 ];
 
 export default function Header() {

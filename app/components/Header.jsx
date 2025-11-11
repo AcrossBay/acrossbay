@@ -1,39 +1,45 @@
 "use client";
-
 import Link from "next/link";
+import Image from "next/image";
 
-const LINKS = [
+const links = [
   { href: "/", label: "Home" },
   { href: "/discover", label: "Discover" },
   { href: "/made-in-italy", label: "Made in Italy" },
   { href: "/amazon-findz", label: "Amazon" },
-  { href: "/ebay-finds", label: "eBay" },
+  { href: "/ebay-findz", label: "eBay" },
   { href: "/tiktok-trends", label: "TikTok" },
-  { href: "/tuscany-virgin", label: "Tuscany" },
+  { href: "/tuscan-origin", label: "Tuscany" },
   { href: "/smart-club", label: "Smart Club" },
-  { href: "/contact", label: "Contact" },
   { href: "/sicily-food", label: "Sicily Food" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function Header() {
   return (
-    <header className="sticky top-0 w-full backdrop-blur bg-white/70 border-b border-slate-200">
-      <div className="mx-auto max-w-5xl px-6 flex justify-between items-center h-14">
-        <Link href="/" className="font-semibold tracking-tight text-teal-800">
-          AcrossBay
-        </Link>
-        <nav className="flex gap-4 text-sm font-medium">
-          {LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-slate-600 hover:text-teal-700 transition"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+    <header className="flex items-center justify-between px-6 py-3 bg-white shadow-md sticky top-0 z-50">
+      <div className="flex items-center space-x-3">
+        <Image
+          src="/acrossbay-logo.svg"
+          alt="AcrossBay Logo"
+          width={130}
+          height={35}
+          priority
+        />
+        <span className="text-xl font-semibold text-gray-700">AcrossBay</span>
       </div>
+
+      <nav className="hidden md:flex space-x-6">
+        {links.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            className="text-gray-600 hover:text-black transition-colors"
+          >
+            {link.label}
+          </Link>
+        ))}
+      </nav>
     </header>
   );
 }

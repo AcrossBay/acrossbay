@@ -20,8 +20,8 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur bg-white/80 border-b border-gray-200 shadow-sm">
       <div className="mx-auto max-w-6xl px-6 h-20 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-4 font-semibold tracking-tight">
-          {/* LOGO più grande e centrato */}
+        {/* Logo singolo */}
+        <Link href="/" className="flex items-center gap-3 font-semibold tracking-tight">
           <Image
             src="/acrossbay-logo.svg"
             alt="AcrossBay Logo"
@@ -30,10 +30,9 @@ export default function Header() {
             className="object-contain"
             onError={(e) => { e.currentTarget.style.display = "none"; }}
           />
-          {/* Testo secondario visibile solo se logo non carica */}
-          <span className="text-xl hidden sm:inline text-gray-800">AcrossBay</span>
         </Link>
 
+        {/* Menu principale */}
         <nav className="hidden md:flex gap-6 text-sm font-medium">
           {LINKS.map((link) => (
             <Link

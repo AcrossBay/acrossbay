@@ -5,18 +5,27 @@ export default function HomePage() {
       <section className="text-center py-20">
         <h1 className="text-4xl font-semibold text-gray-800 mb-4">
           Live the Coastal Lifestyle
-    {/* ——— Promo: Smart Made in Italy ——— */}
-<section className="py-14">
-  <div className="max-w-5xl mx-auto rounded-2xl p-8 lg:p-10 bg-gradient-to-br from-teal-50 to-emerald-50 border border-teal-100">
-    <div className="flex flex-col lg:flex-row items-start lg:items-center gap-6 justify-between">
-      <div className="max-w-3xl">
-        <p className="text-sm uppercase tracking-wide text-teal-700 mb-2">🇮🇹 Made in Italy</p>
-        <h2 className="text-2xl md:text-3xl font-semibold text-slate-900">
-          Smart Made in Italy — limited drops, timeless essentials
-        </h2>
-        <p className="mt-3 text-slate-600">
-          Italian craftsmanship meets everyday simplicity: clean design, relaxed fit, verified marketplaces.
-        </p>
+    {/* ——— Promo: Smart Made in Italy (Soft Version) ——— */}
+<section className="py-10">
+  <div className="max-w-4xl mx-auto text-center px-6">
+    <p className="text-xs uppercase tracking-widest text-teal-700 mb-1">🇮🇹 Smart Made in Italy</p>
+    <h2 className="text-xl font-semibold text-slate-800">
+      Everyday simplicity meets Italian craftsmanship
+    </h2>
+    <p className="text-slate-600 mt-2 text-sm">
+      Clean design, relaxed fit, and limited drops from verified marketplaces.
+    </p>
+    <div className="mt-4">
+      <a
+        href="/made-in-italy"
+        className="inline-flex items-center gap-1 text-teal-700 font-medium text-sm hover:underline"
+      >
+        Explore Made in Italy →
+      </a>
+    </div>
+  </div>
+</section>
+{/* ——— /Promo: Smart Made in Italy (Soft Version) ——— */}
 
         {/* badges opzionali */}
         <div className="mt-4 flex flex-wrap gap-2 text-xs">

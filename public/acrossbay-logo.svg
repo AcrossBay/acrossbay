@@ -1,8 +1,6 @@
-<svg width="160" height="28" viewBox="0 0 160 28" xmlns="http://www.w3.org/2000/svg">
-  <rect width="160" height="28" rx="8" fill="white"/>
-  <g font-family="Nunito Sans, Arial, sans-serif" font-weight="700" font-size="16" fill="#0f172a">
-    <text x="12" y="19">Across</text>
-    <text x="70" y="19" fill="#0ea5e9">Bay</text>
-  </g>
-  <circle cx="146" cy="14" r="6" fill="#0ea5e9" opacity="0.12"/>
+<svg width="200" height="40" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="40" fill="white"/>
+  <text x="20" y="25" font-family="Nunito Sans, Arial, sans-serif" font-weight="700" font-size="20" fill="#000">Across</text>
+  <text x="88" y="25" font-family="Nunito Sans, Arial, sans-serif" font-weight="700" font-size="20" fill="#0ea5e9">Bay</text>
+  <text x="145" y="17" font-family="Arial, sans-serif" font-size="10" fill="#666">®</text>
 </svg>

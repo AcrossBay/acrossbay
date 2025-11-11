@@ -12,8 +12,8 @@ const navLinks = [
   { href: "/ebay", label: "eBay" },
   { href: "/tiktok", label: "TikTok" },
   { href: "/tuscany", label: "Tuscany" },
-  { href: "/smart-club", label: "Smart Club" },
   { href: "/sicily-food", label: "Sicily Food" },
+  { href: "/herbal-bay", label: "Herbal Bay" }, // <— aggiunta al menù
   { href: "/contact", label: "Contact" },
 ];
 
@@ -23,18 +23,15 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-white/80 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
-        {/* LOGO con marchio registrato */}
-        <Link href="/" className="flex items-center gap-1" onClick={() => setOpen(false)}>
-          <div className="flex items-center">
-            <Image
-              src="/acrossbay-logo.svg"
-              alt="AcrossBay Logo"
-              width={200}
-              height={40}
-              priority
-            />
-            <span className="ml-1 text-sm text-gray-600">®</span>
-          </div>
+        {/* LOGO — nessuna ® esterna: resta solo quella dentro l'SVG, così sparisce il doppione */}
+        <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
+          <Image
+            src="/acrossbay-logo.svg"
+            alt="AcrossBay"
+            width={220}  // logo un po’ più grande
+            height={44}
+            priority
+          />
         </Link>
 
         {/* NAV DESKTOP */}
@@ -63,7 +60,7 @@ export default function Header() {
         </button>
       </div>
 
-      {/* MENU MOBILE A SCOMPARSA */}
+      {/* DRAWER MOBILE */}
       {open && (
         <div className="md:hidden border-t bg-white">
           <nav className="mx-auto flex max-w-6xl flex-col px-4 py-3">

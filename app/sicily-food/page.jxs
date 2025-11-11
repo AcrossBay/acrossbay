@@ -5,11 +5,9 @@ export const metadata = {
 
 export default function SicilyFoodPage() {
   return (
-    <main className="max-w-5xl mx-auto px-6 py-12 space-y-8">
+    <main className="max-w-5xl mx-auto px-6 py-12">
       <h1 className="text-3xl font-bold">Sicily Food</h1>
-      <p className="text-gray-600">
-        Questa è una pagina di test. Se la stai vedendo, la route funziona correttamente.
-      </p>
+      <p className="text-gray-600">Questa è una pagina di test. Se la stai vedendo, la route funziona.</p>
     </main>
   );
 }

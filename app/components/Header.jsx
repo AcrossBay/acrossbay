@@ -18,27 +18,28 @@ const LINKS = [
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full backdrop-blur bg-white/70 border-b">
-      <div className="mx-auto max-w-5xl px-6 h-14 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight">
-          {/* Logo SVG */}
+    <header className="sticky top-0 z-50 w-full backdrop-blur bg-white/80 border-b border-gray-200">
+      <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-3 font-semibold tracking-tight">
+          {/* Logo più grande */}
           <Image
             src="/acrossbay-logo.svg"
             alt="AcrossBay Logo"
-            width={28}
-            height={28}
-            className="inline-block"
+            width={120}
+            height={40}
+            className="object-contain"
             onError={(e) => { e.currentTarget.style.display = "none"; }}
           />
-          <span>AcrossBay</span>
+          {/* Se il logo non appare, mostra solo il testo */}
+          <span className="text-lg hidden sm:inline">AcrossBay</span>
         </Link>
 
-        <nav className="hidden md:flex gap-4 text-sm">
+        <nav className="hidden md:flex gap-5 text-sm font-medium">
           {LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="hover:underline text-gray-700 hover:text-black"
+              className="text-gray-700 hover:text-black transition-colors"
             >
               {link.label}
             </Link>

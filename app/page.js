@@ -1,91 +1,81 @@
-import PromoBanner from "./components/PromoBanner";
-import SmallCard from "./components/SmallCard";
-
 export const metadata = {
-  title: "AcrossBay — Smart lifestyle, minimal design",
-  description:
-    "Selezioni smart e minimal da marketplace affidabili. Regali e oggetti utili con stile.",
+  title: "AcrossBay | Smart Lifestyle",
+  description: "Smart and stylish essentials curated from global marketplaces.",
 };
+
+import Image from "next/image";
+import Link from "next/link";
+
+const items = [
+  {
+    href: "/made-in-italy",
+    title: "Linen Shirt",
+    img: "/linen-shirt.jpg",
+  },
+  {
+    href: "/made-in-italy",
+    title: "Ceramics",
+    img: "/ceramics.jpg",
+  },
+  {
+    href: "/made-in-italy",
+    title: "Leather Bag",
+    img: "/leather-bag.jpg",
+  },
+  {
+    href: "/discover",
+    title: "Aroma Diffuser",
+    img: "/diffuser.jpg",
+  },
+  {
+    href: "/discover",
+    title: "Mini Projector",
+    img: "/projector.jpg",
+  },
+  {
+    href: "/discover",
+    title: "Cozy Throw (Promo)",
+    img: "/throw.jpg",
+  },
+];
 
 export default function HomePage() {
   return (
-    <main className="mx-auto max-w-5xl px-6 py-10">
-      {/* HERO */}
-      <section className="text-center mb-8">
-        <h1 className="text-3xl md:text-4xl font-semibold">
+    <main className="mx-auto max-w-6xl px-4 py-10">
+      {/* Hero */}
+      <section className="mb-10 text-center">
+        <h1 className="text-4xl font-semibold tracking-tight md:text-5xl">
           Live the Coastal Lifestyle
         </h1>
-        <p className="text-gray-600 mt-2">
+        <p className="mx-auto mt-3 max-w-2xl text-gray-600">
           Smart and stylish essentials curated from global marketplaces.
         </p>
       </section>
 
-      {/* PROMO STAGIONALE (minimal) */}
-      <PromoBanner />
-
-      {/* GRID PICCOLA: Made in Italy (ridotta e coerente) */}
-      <section className="my-8">
-        <div className="mb-3 flex items-end justify-between">
-          <h2 className="text-lg font-semibold">Made in Italy</h2>
-          <a
-            href="/made-in-italy"
-            className="text-sm text-gray-600 hover:text-gray-900"
-          >
-            Vedi tutto →
-          </a>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          <SmallCard
-            title="Linen Shirt"
-            href="/made-in-italy"
-            img="/linen-shirt.jpg"     // se non c'è, la card resta sobria
-            caption="Lino italiano, fit rilassato"
-          />
-          <SmallCard
-            title="Ceramics"
-            href="/made-in-italy"
-            img="/ceramics.jpg"
-            caption="Ceramiche artigianali"
-          />
-          <SmallCard
-            title="Leather Bag"
-            href="/made-in-italy"
-            img="/leather-bag.jpg"
-            caption="Pelle pieno fiore"
-          />
-        </div>
-      </section>
-
-      {/* GRID PICCOLA: Holiday Picks (altra vetrina con card più piccole) */}
-      <section className="my-8">
-        <div className="mb-3 flex items-end justify-between">
-          <h2 className="text-lg font-semibold">Holiday Picks</h2>
-          <a
-            href="/discover"
-            className="text-sm text-gray-600 hover:text-gray-900"
-          >
-            Scopri di più →
-          </a>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          <SmallCard
-            title="Smart Mini Projector"
-            href="/discover"
-            img="/projector.jpg"
-            caption="Movie nights a casa"
-          />
-          <SmallCard
-            title="Aroma Diffuser"
-            href="/discover"
-            img="/diffuser.jpg"
-            caption="Relax, luce soffusa"
-          />
-          <SmallCard
-            title="Warm Throw"
-            href="/discover"
-            img="/throw.jpg"
-            caption="Morbido e minimal"
-          />
+      {/* Grid prodotti (uniforme, minimal) */}
+      <section aria-label="Featured">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {items.map((it) => (
+            <Link
+              key={it.title}
+              href={it.href}
+              className="group rounded-2xl border bg-white p-4 shadow-sm transition hover:shadow-md"
+            >
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
+                <Image
+                  src={it.img}
+                  alt={it.title}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  priority={it.title === "Linen Shirt"} // una sola prioritaria
+                />
+              </div>
+              <h3 className="mt-3 text-center text-[15px] font-medium text-gray-800">
+                {it.title}
+              </h3>
+            </Link>
+          ))}
         </div>
       </section>
     </main>

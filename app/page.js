@@ -85,6 +85,7 @@ export default function HomePage() {
                 View item →
               </a>
             </div>
+                  
 
             <div className="p-6 border rounded-2xl shadow-sm hover:shadow-md transition">
               <img

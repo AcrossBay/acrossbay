@@ -2,79 +2,81 @@ import Section from "./components/Section";
 import ProductCard from "./components/ProductCard";
 
 export const metadata = {
-  title: "AcrossBay — Coastal Lifestyle",
-  description: "Smart and stylish essentials curated from global marketplaces.",
+  title: "AcrossBay | Live the Coastal Lifestyle",
+  description:
+    "Smart and stylish essentials curated from global marketplaces — clean, modern, minimal design inspired by the Mediterranean lifestyle.",
 };
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen">
-      {/* HERO compatto e coerente */}
-      <section className="w-full bg-gradient-to-b from-white to-gray-50">
-        <div className="mx-auto max-w-6xl px-6 py-12 md:py-16">
-          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-center">
-            Live the Coastal Lifestyle
-          </h1>
-          <p className="text-gray-600 text-center mt-3 max-w-2xl mx-auto">
-            Smart and stylish essentials curated from global marketplaces.
+    <main className="min-h-screen bg-gradient-to-b from-white to-sky-50 text-gray-900">
+      {/* Hero Section */}
+      <Section
+        title="Live the Coastal Lifestyle"
+        subtitle="Smart and stylish essentials curated from global marketplaces."
+      >
+        <div className="mt-8 text-center">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Discover timeless products, inspired by simplicity, functionality,
+            and modern Italian style.
           </p>
         </div>
-      </section>
+      </Section>
 
-      {/* “Made in Italy” trasformato in card uniforme */}
-      <Section title="Made in Italy" subtitle="Limited drops, timeless essentials">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Made in Italy Section */}
+      <Section title="Made in Italy">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8">
           <ProductCard
-            imageSrc="/images/madeinitaly.jpg"   /* puoi cambiare immagine */
-            imageAlt="Made in Italy"
-            title="Smart Made in Italy"
-            subtitle="Italian craftsmanship meets everyday simplicity: clean design, relaxed fit, verified marketplaces."
+            imageSrc="/images/madeinitaly-1.jpg"
+            imageAlt="Made in Italy products"
+            title="Made in Italy"
+            subtitle="Timeless quality and refined craftsmanship."
             href="/made-in-italy"
           />
-          {/* Se vuoi altre due card teaser per armonizzare la griglia */}
           <ProductCard
-            imageSrc="/images/linen-shirt.jpg"
-            imageAlt="Linen Shirt"
+            imageSrc="/images/madeinitaly-2.jpg"
+            imageAlt="Italian linen shirt"
             title="Linen Shirt"
-            subtitle="Breathable, minimal, coastal look."
+            subtitle="Essential summer comfort — breathable and natural."
             href="/made-in-italy"
           />
           <ProductCard
-            imageSrc="/images/ceramics.jpg"
-            imageAlt="Ceramics"
-            title="Mediterranean Ceramics"
-            subtitle="Warm textures for smart homes."
+            imageSrc="/images/madeinitaly-3.jpg"
+            imageAlt="Italian ceramics"
+            title="Ceramics"
+            subtitle="Elegant handmade design from Sicilian artisans."
             href="/made-in-italy"
           />
         </div>
       </Section>
 
-      {/* Discover uniforme con la stessa griglia e card */}
-      <Section title="Discover Marketplace Finds" subtitle="Curated picks from Amazon, eBay and TikTok">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Discover Section */}
+      <Section title="Discover Marketplace Finds">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
           <ProductCard
             imageSrc="/images/projector.jpg"
-            imageAlt="Mini Projector"
+            imageAlt="Smart Mini Projector"
             title="Smart Mini Projector"
             subtitle="Compact and stylish, perfect for cozy movie nights."
             href="/discover"
           />
           <ProductCard
-            imageSrc="/images/diffuser.jpg"
-            imageAlt="Aroma Diffuser"
+            imageSrc="/images/aroma.jpg"
+            imageAlt="Smart Aroma Diffuser"
             title="Smart Aroma Diffuser"
             subtitle="Calm your space with a fine, refreshing mist."
             href="/discover"
           />
-          <ProductCard
-            imageSrc="/images/organizer.jpg"
-            imageAlt="Desk Organizer"
-            title="Magnetic Desk Organizer"
-            subtitle="Minimal workspace, maximum focus."
-            href="/discover"
-          />
         </div>
       </Section>
+
+      {/* Divider Line */}
+      <div className="w-full border-t border-gray-200 mt-16 mb-10"></div>
+
+      {/* Footer Preview */}
+      <footer className="text-center text-gray-500 text-sm pb-8">
+        © {new Date().getFullYear()} AcrossBay — Smart Lifestyle Discoveries
+      </footer>
     </main>
   );
 }

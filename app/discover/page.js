@@ -273,6 +273,195 @@ export default function DiscoverPage() {
     </div>
   </div>
 </section>
+{/* Cozy Home Tech */}
+<section className="py-14">
+  <div className="max-w-6xl mx-auto px-4">
+    <h2 className="text-2xl font-semibold mb-2">Cozy Home Tech</h2>
+    <p className="text-lg text-gray-600 mb-8">
+      Small smart upgrades for calm evenings — ambient light, warm coffee, gentle sound.
+    </p>
+
+    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {/* Card */}
+      <article className="rounded-2xl border p-4 shadow-sm bg-white">
+        <img
+          src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=640&auto=format&fit=crop"
+          alt="Smart Mug Warmer"
+          className="rounded-xl mb-4 mx-auto"
+        />
+        <h3 className="font-semibold text-gray-800">Smart Mug Warmer</h3>
+        <p className="text-sm text-gray-600 mb-3">
+          Keeps your coffee at the perfect temp all morning.
+        </p>
+        <p className="text-sm text-gray-500 mb-4">£19–£29</p>
+        <div className="flex gap-3">
+          <a href="#" className="inline-flex items-center rounded-full px-3 py-1 text-sm border hover:bg-gray-50">View on Amazon</a>
+          <a href="#" className="inline-flex items-center rounded-full px-3 py-1 text-sm border hover:bg-gray-50">View on eBay</a>
+        </div>
+      </article>
+
+      <article className="rounded-2xl border p-4 shadow-sm bg-white">
+        <img
+          src="https://images.unsplash.com/photo-1603481549445-42b4b6c6c1a2?q=80&w=640&auto=format&fit=crop"
+          alt="Ambient LED Lamp"
+          className="rounded-xl mb-4 mx-auto"
+        />
+        <h3 className="font-semibold text-gray-800">Ambient LED Lamp</h3>
+        <p className="text-sm text-gray-600 mb-3">
+          Minimal mood light with soft dimmer — bedside or desk.
+        </p>
+        <p className="text-sm text-gray-500 mb-4">£24–£45</p>
+        <div className="flex gap-3">
+          <a href="#" className="inline-flex items-center rounded-full px-3 py-1 text-sm border hover:bg-gray-50">View on Amazon</a>
+          <a href="#" className="inline-flex items-center rounded-full px-3 py-1 text-sm border hover:bg-gray-50">View on TikTok</a>
+        </div>
+      </article>
+
+      <article className="rounded-2xl border p-4 shadow-sm bg-white">
+        <img
+          src="https://images.unsplash.com/photo-1520975619010-6a4b98cd3a25?q=80&w=640&auto=format&fit=crop"
+          alt="Mini Bluetooth Speaker"
+          className="rounded-xl mb-4 mx-auto"
+        />
+        <h3 className="font-semibold text-gray-800">Mini Bluetooth Speaker</h3>
+        <p className="text-sm text-gray-600 mb-3">
+          Small, elegant, and powerful — perfect for relaxing playlists.
+        </p>
+        <p className="text-sm text-gray-500 mb-4">£19–£39</p>
+        <div className="flex gap-3">
+          <a href="#" className="inline-flex items-center rounded-full px-3 py-1 text-sm border hover:bg-gray-50">View on Amazon</a>
+          <a href="#" className="inline-flex items-center rounded-full px-3 py-1 text-sm border hover:bg-gray-50">View on eBay</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+{/* Travel Essentials */}
+<section className="py-14 bg-gray-50">
+  <div className="max-w-6xl mx-auto px-4">
+    <h2 className="text-2xl font-semibold mb-2">Travel Essentials</h2>
+    <p className="text-lg text-gray-600 mb-8">
+      Lightweight, practical picks for weekends away — compact and durable.
+    </p>
+
+    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <article className="rounded-2xl border p-4 shadow-sm bg-white">
+        <img
+          src="https://images.unsplash.com/photo-1520975764746-0f87bab7be24?q=80&w=640&auto=format&fit=crop"
+          alt="Carry-On Organizer Set"
+          className="rounded-xl mb-4 mx-auto"
+        />
+        <h3 className="font-semibold text-gray-800">Carry-On Organizer Set</h3>
+        <p className="text-sm text-gray-600 mb-3">
+          Packing cubes that keep outfits clean and tidy.
+        </p>
+        <p className="text-sm text-gray-500 mb-4">£14–£29</p>
+        <div className="flex gap-3">
+          <a href="#" className="inline-flex items-center rounded-full px-3 py-1 text-sm border hover:bg-gray-50">View on Amazon</a>
+          <a href="#" className="inline-flex items-center rounded-full px-3 py-1 text-sm border hover:bg-gray-50">View on eBay</a>
+        </div>
+      </article>
+
+      <article className="rounded-2xl border p-4 shadow-sm bg-white">
+        <img
+          src="https://images.unsplash.com/photo-1535576434764-05f8a8a5b5a9?q=80&w=640&auto=format&fit=crop"
+          alt="Compact Power Bank"
+          className="rounded-xl mb-4 mx-auto"
+        />
+        <h3 className="font-semibold text-gray-800">Compact Power Bank</h3>
+        <p className="text-sm text-gray-600 mb-3">
+          Slim design, fast charge — phone safe for a full day out.
+        </p>
+        <p className="text-sm text-gray-500 mb-4">£17–£35</p>
+        <div className="flex gap-3">
+          <a href="#" className="inline-flex items-center rounded-full px-3 py-1 text-sm border hover:bg-gray-50">View on Amazon</a>
+          <a href="#" className="inline-flex items-center rounded-full px-3 py-1 text-sm border hover:bg-gray-50">View on TikTok</a>
+        </div>
+      </article>
+
+      <article className="rounded-2xl border p-4 shadow-sm bg-white">
+        <img
+          src="https://images.unsplash.com/photo-1552321554-5fefe8b1c5d5?q=80&w=640&auto=format&fit=crop"
+          alt="Water-Resistant Crossbody"
+          className="rounded-xl mb-4 mx-auto"
+        />
+        <h3 className="font-semibold text-gray-800">Water-Resistant Crossbody</h3>
+        <p className="text-sm text-gray-600 mb-3">
+          Secure minimal bag for city walks and flights.
+        </p>
+        <p className="text-sm text-gray-500 mb-4">£22–£49</p>
+        <div className="flex gap-3">
+          <a href="#" className="inline-flex items-center rounded-full px-3 py-1 text-sm border hover:bg-gray-50">View on Amazon</a>
+          <a href="#" className="inline-flex items-center rounded-full px-3 py-1 text-sm border hover:bg-gray-50">View on eBay</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+{/* Minimal Desk Setup */}
+<section className="py-14">
+  <div className="max-w-6xl mx-auto px-4">
+    <h2 className="text-2xl font-semibold mb-2">Minimal Desk Setup</h2>
+    <p className="text-lg text-gray-600 mb-8">
+      Clean desk, clear mind — smart organizers and soft lighting for focus.
+    </p>
+
+    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <article className="rounded-2xl border p-4 shadow-sm bg-white">
+        <img
+          src="https://images.unsplash.com/photo-1587613865763-4b8b0a02f6f6?q=80&w=640&auto=format&fit=crop"
+          alt="Bamboo Desk Organizer"
+          className="rounded-xl mb-4 mx-auto"
+        />
+        <h3 className="font-semibold text-gray-800">Bamboo Desk Organizer</h3>
+        <p className="text-sm text-gray-600 mb-3">
+          Slots for phone, pens and notes — tidy in seconds.
+        </p>
+        <p className="text-sm text-gray-500 mb-4">£16–£32</p>
+        <div className="flex gap-3">
+          <a href="#" className="inline-flex items-center rounded-full px-3 py-1 text-sm border hover:bg-gray-50">View on Amazon</a>
+          <a href="#" className="inline-flex items-center rounded-full px-3 py-1 text-sm border hover:bg-gray-50">View on eBay</a>
+        </div>
+      </article>
+
+      <article className="rounded-2xl border p-4 shadow-sm bg-white">
+        <img
+          src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=640&auto=format&fit=crop"
+          alt="Low-Profile Headphones"
+          className="rounded-xl mb-4 mx-auto"
+        />
+        <h3 className="font-semibold text-gray-800">Low-Profile Headphones</h3>
+        <p className="text-sm text-gray-600 mb-3">
+          Neutral sound, comfy fit — music without distraction.
+        </p>
+        <p className="text-sm text-gray-500 mb-4">£29–£59</p>
+        <div className="flex gap-3">
+          <a href="#" className="inline-flex items-center rounded-full px-3 py-1 text-sm border hover:bg-gray-50">View on Amazon</a>
+          <a href="#" className="inline-flex items-center rounded-full px-3 py-1 text-sm border hover:bg-gray-50">View on TikTok</a>
+        </div>
+      </article>
+
+      <article className="rounded-2xl border p-4 shadow-sm bg-white">
+        <img
+          src="https://images.unsplash.com/photo-1503602642458-232111445657?q=80&w=640&auto=format&fit=crop"
+          alt="Soft Desk Lamp"
+          className="rounded-xl mb-4 mx-auto"
+        />
+        <h3 className="font-semibold text-gray-800">Soft Desk Lamp</h3>
+        <p className="text-sm text-gray-600 mb-3">
+          Eye-friendly light for evening sessions.
+        </p>
+        <p className="text-sm text-gray-500 mb-4">£21–£44</p>
+        <div className="flex gap-3">
+          <a href="#" className="inline-flex items-center rounded-full px-3 py-1 text-sm border hover:bg-gray-50">View on Amazon</a>
+          <a href="#" className="inline-flex items-center rounded-full px-3 py-1 text-sm border hover:bg-gray-50">View on eBay</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
 
     </main>
   );

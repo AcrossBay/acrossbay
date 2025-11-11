@@ -17,28 +17,31 @@ const LINKS = [
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-40 w-full backdrop-blur bg-white/70 border-b">
-      <div className="mx-auto max-w-5xl px-6 flex items-center justify-between h-14">
-        {/* LOGO testo + ® vicino, senza duplicati */}
-        <Link href="/" className="inline-flex items-center gap-1 select-none">
-          <span className="font-semibold tracking-tight text-xl">
-            <span>Across</span>
-            <span className="text-sky-500">Bay</span>
-          </span>
-          <span className="align-top text-[10px] leading-none translate-y-[-6px]">®</span>
-        </Link>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur border-b shadow-sm">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6">
+        {/* Contenitore principale */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between py-3">
+          {/* Logo */}
+          <Link href="/" className="flex items-center justify-center sm:justify-start">
+            <h1 className="text-2xl font-bold tracking-tight text-gray-900">
+              Across<span className="text-sky-500">Bay</span>
+              <sup className="text-[10px] text-gray-500 ml-1 align-top">®</sup>
+            </h1>
+          </Link>
 
-        <nav className="hidden md:flex gap-5 text-sm">
-          {LINKS.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="text-gray-600 hover:text-gray-900"
-            >
-              {l.label}
-            </Link>
-          ))}
-        </nav>
+          {/* Barra menu visibile su TUTTI i dispositivi */}
+          <nav className="mt-3 sm:mt-0 flex flex-wrap justify-center gap-3 text-sm text-gray-700">
+            {LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="px-2 py-1 rounded hover:bg-gray-100 transition"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
       </div>
     </header>
   );

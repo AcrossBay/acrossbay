@@ -11,9 +11,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="min-h-screen bg-white text-gray-800">
         <header className="border-b">
-          <nav className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
-            <Link href="/" className="font-bold text-xl">AcrossBay</Link>
-            <div className="flex gap-5 text-sm">
+          <nav className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between flex-wrap">
+            <Link href="/" className="font-bold text-2xl tracking-tight">AcrossBay</Link>
+            <div className="flex flex-wrap gap-5 text-sm mt-3 md:mt-0">
               <Link href="/amazon" className="hover:underline">Amazon</Link>
               <Link href="/ebay" className="hover:underline">eBay</Link>
               <Link href="/tiktok" className="hover:underline">TikTok</Link>

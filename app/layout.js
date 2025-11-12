@@ -9,11 +9,17 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-white text-gray-800">
-        <header className="border-b">
-          <nav className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between flex-wrap">
-            <Link href="/" className="font-bold text-2xl tracking-tight">AcrossBay</Link>
-            <div className="flex flex-wrap gap-5 text-sm mt-3 md:mt-0">
+      <body className="min-h-screen bg-white text-gray-800 antialiased">
+        {/* HEADER */}
+        <header className="border-b bg-white">
+          <nav className="mx-auto max-w-6xl px-4 md:px-6 py-3 md:py-4 flex items-center justify-between gap-3 flex-wrap">
+            {/* LOGO: Across + Bay blu, no tagli */}
+            <Link href="/" className="font-extrabold leading-none text-[22px] md:text-2xl tracking-tight">
+              <span>Across</span><span className="text-sky-600">Bay</span>
+            </Link>
+
+            {/* MENU: visibile e a capo se serve */}
+            <div className="flex flex-wrap items-center gap-4 md:gap-6 text-[13px] md:text-sm">
               <Link href="/amazon" className="hover:underline">Amazon</Link>
               <Link href="/ebay" className="hover:underline">eBay</Link>
               <Link href="/tiktok" className="hover:underline">TikTok</Link>
@@ -24,17 +30,21 @@ export default function RootLayout({ children }) {
           </nav>
         </header>
 
-        <main className="mx-auto max-w-6xl px-6 py-10">{children}</main>
+        {/* MAIN */}
+        <main className="mx-auto max-w-6xl px-4 md:px-6 py-8 md:py-10">
+          {children}
+        </main>
 
-        <footer className="mt-16 border-t">
-          <div className="mx-auto max-w-6xl px-6 py-8 text-sm text-gray-600 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+        {/* FOOTER compatto */}
+        <footer className="mt-10 border-t bg-white">
+          <div className="mx-auto max-w-6xl px-4 md:px-6 py-4 text-[12px] md:text-sm text-gray-600 flex flex-col md:flex-row gap-2 md:items-center md:justify-between">
             <p>© {new Date().getFullYear()} AcrossBay · All rights reserved.</p>
-            <div className="flex gap-5">
+            <div className="flex gap-4 md:gap-6">
               <Link href="/privacy" className="hover:underline">Privacy</Link>
               <a href="mailto:massi@across-bay.com" className="hover:underline">massi@across-bay.com</a>
             </div>
           </div>
-          <div className="mx-auto max-w-6xl px-6 pb-8 text-xs text-gray-500">
+          <div className="mx-auto max-w-6xl px-4 md:px-6 pb-4 text-[11px] md:text-xs text-gray-500">
             Trend 2025 · Tech-lifestyle minimal e accessibili. Alcuni link sono affiliati; potremmo ricevere una commissione senza costi aggiuntivi per te.
           </div>
         </footer>

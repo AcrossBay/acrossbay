@@ -23,7 +23,7 @@ export default function Page() {
 
 function Card({ title, href, img }) {
   return (
-    <Link href={href} className="block border rounded-2xl overflow-hidden hover:shadow">
+    <Link href={href} className="block border rounded-2xl overflow-hidden hover:shadow transition">
       <img src={img} alt={title} className="w-full h-48 object-cover" />
       <div className="p-4">
         <h3 className="font-semibold">{title}</h3>

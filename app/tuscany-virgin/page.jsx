@@ -1,15 +1,14 @@
 export const metadata = {
-  title: "Tuscany Virgin | AcrossBay",
-  description: "Exclusive finds from Tuscany — crafted in Italy, curated by AcrossBay.",
+  title: "Tuscany Selections | AcrossBay",
+  description: "Italian lifestyle and crafted goods inspired by Tuscany.",
 };
 
-export default function TuscanyVirginPage() {
+export default function TuscanyPage() {
   return (
-    <main style={{ padding: "4rem", textAlign: "center" }}>
-      <h1>🌿 Tuscany Virgin</h1>
-      <p>
-        Discover exclusive products and designs from the heart of Tuscany — where
-        Italian authenticity meets contemporary style.
+    <main className="mx-auto max-w-5xl px-6 py-10 text-center">
+      <h1 className="text-3xl font-semibold mb-3">Tuscany Selections</h1>
+      <p className="text-gray-600">
+        Italian lifestyle picks inspired by Tuscany. Content coming soon.
       </p>
     </main>
   );

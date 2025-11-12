@@ -27,12 +27,15 @@ export default function RootLayout({ children }) {
         <main className="mx-auto max-w-6xl px-6 py-10">{children}</main>
 
         <footer className="mt-16 border-t">
-          <div className="mx-auto max-w-6xl px-6 py-8 text-sm text-gray-600 flex flex-col md:flex-row gap-3 md:items-center md:justify-between">
+          <div className="mx-auto max-w-6xl px-6 py-8 text-sm text-gray-600 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <p>© {new Date().getFullYear()} AcrossBay · All rights reserved.</p>
             <div className="flex gap-5">
               <Link href="/privacy" className="hover:underline">Privacy</Link>
               <a href="mailto:massi@across-bay.com" className="hover:underline">massi@across-bay.com</a>
             </div>
+          </div>
+          <div className="mx-auto max-w-6xl px-6 pb-8 text-xs text-gray-500">
+            Trend 2025 · Tech-lifestyle minimal e accessibili. Alcuni link sono affiliati; potremmo ricevere una commissione senza costi aggiuntivi per te.
           </div>
         </footer>
       </body>

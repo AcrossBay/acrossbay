@@ -12,10 +12,10 @@ export default function Page() {
       </div>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        <Card title="Amazon" href="/amazon" img="/images/projector-mini.webp" />
-        <Card title="eBay" href="/ebay" img="/images/retro-console.webp" />
-        <Card title="TikTok" href="/tiktok" img="/images/led-strip.webp" />
-        <Card title="Tuscany" href="/tuscany" img="/images/linen-shirt.webp" />
+        <Card title="Amazon" href="/amazon" img="/projector-mini.webp" />
+        <Card title="eBay" href="/ebay" img="/retro-console.webp" />
+        <Card title="TikTok" href="/tiktok" img="/led-strip.webp" />
+        <Card title="Tuscany" href="/tuscany" img="/linen-shirt.webp" />
       </div>
     </section>
   );

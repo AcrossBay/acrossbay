@@ -1,54 +1,49 @@
-// app/ebay/page.jsx
-import { getEbayLink } from "../../lib/links";
+"use client";
+
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { DICT } from "@/lib/i18n";
 
 export default function Page() {
-  const items = [
-    {
-      title: "Cuffie Vintage 80s",
-      img: "/retro-console.webp",
-      url: "https://www.ebay.co.uk/itm/1234567890", // <-- metti un link eBay reale
-      price: "£39.90",
-      desc: "Design retro con driver moderni."
-    },
-    {
-      title: "Orologio Classic Quartz",
-      img: "/projector.jpg",
-      url: "https://www.ebay.co.uk/itm/2345678901",
-      price: "£49.00",
-      desc: "Eleganza minimal, cinturino in pelle."
-    },
-    {
-      title: "Retro Console Portable",
-      img: "/retro-console.webp",
-      url: "https://www.ebay.co.uk/itm/3456789012",
-      price: "£29.90",
-      desc: "Tanti giochi classici in tasca."
-    }
+  const [lang, setLang] = useState("en");
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("acrossbay_lang");
+      if (saved && DICT[saved]) setLang(saved);
+    } catch {}
+  }, []);
+  const T = (DICT[lang] ?? DICT.en).pages.ebay;
+
+  const cards = [
+    { key: "retroConsole", img: "/retro-console.webp", href: "/ebay" },
+    { key: "leatherBag",   img: "/leather-bag.jpg",    href: "/ebay" },
+    { key: "ledStrip",     img: "/led-strip.webp",     href: "/ebay" },
   ];
 
   return (
-    <main className="p-8 bg-white text-gray-800">
-      <h1 className="text-3xl font-bold mb-6">eBay Finds · AcrossBay</h1>
-      <p className="mb-8 text-gray-600">Occasioni autentiche e selezioni smart dal marketplace piu dinamico.</p>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {items.map((it, i) => (
-          <div key={i} className="border rounded-2xl p-4 shadow-sm">
-            <img src={it.img} alt={it.title} className="rounded-xl mb-3" />
-            <h2 className="font-semibold text-lg mb-1">{it.title}</h2>
-            <p className="text-sm text-gray-600 mb-2">{it.desc}</p>
-            <p className="text-sm mb-4">{it.price}</p>
-            <a
-              href={getEbayLink(it.url)}
-              className="text-teal-600 font-semibold"
-              target="_blank"
-              rel="noreferrer"
-            >
-              View on eBay →
-            </a>
-          </div>
-        ))}
+    <section className="space-y-6 md:space-y-8">
+      <div className="rounded-2xl bg-gray-50 p-5 md:p-8">
+        <h1 className="text-2xl md:text-3xl font-bold mb-2">{T.title} · AcrossBay</h1>
+        <p className="text-gray-700 text-sm md:text-base">{T.subtitle}</p>
       </div>
-    </main>
+
+      <div className="grid gap-4 sm:gap-6 grid-cols-2 md:grid-cols-3">
+        {cards.map((c) => {
+          const copy = T.items[c.key];
+          return (
+            <Link key={c.key} href={c.href} className="block border rounded-2xl overflow-hidden bg-white hover:shadow">
+              <div className="aspect-[4/3] w-full overflow-hidden">
+                <img src={c.img} alt={copy.title} className="w-full h-full object-cover" />
+              </div>
+              <div className="p-3 md:p-4">
+                <h3 className="font-semibold text-sm md:text-base">{copy.title}</h3>
+                <p className="text-xs md:text-sm text-gray-500">{copy.desc}</p>
+                <p className="text-xs md:text-sm text-gray-600 mt-1">{copy.cta}</p>
+              </div>
+            </Link>
+          );
+        })}
+      </div>
+    </section>
   );
 }

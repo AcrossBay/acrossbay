@@ -7,9 +7,7 @@ export default function EbayPage() {
   return (
     <main>
       <h1>eBay · AcrossBay</h1>
-      <p>
-        <a href={link} target="_blank">Vai su eBay</a>
-      </p>
+      <p><a href={link} target="_blank">Vai su eBay</a></p>
     </main>
   );
 }

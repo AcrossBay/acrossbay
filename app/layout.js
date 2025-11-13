@@ -26,24 +26,28 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="min-h-screen bg-white text-gray-800 antialiased">
-        {/* HEADER fisso con hamburger mobile */}
+        {/* HEADER */}
         <header className="fixed top-0 left-0 right-0 z-50 border-b bg-white/90 backdrop-blur">
           <nav className="mx-auto max-w-6xl px-4 md:px-6 py-3 md:py-4 flex items-center justify-between">
             <Link href="/" className="font-extrabold leading-none text-[20px] md:text-2xl tracking-tight">
               <span>Across</span><span className="text-sky-600">Bay</span>
             </Link>
 
+            {/* DESKTOP */}
             <div className="hidden md:flex items-center gap-6 text-sm">
               <Link href="/amazon">Amazon</Link>
               <Link href="/ebay">eBay</Link>
               <Link href="/tiktok">TikTok</Link>
               <Link href="/tuscany">Tuscany</Link>
               <Link href="/discover">Discover</Link>
+              <Link href="/made-in-italy">Made in Italy</Link>
+              <Link href="/xmas-deals">Promo Natale</Link>
               <Link href="/about">About</Link>
               <Link href="/contact">Contact</Link>
               <Link href="/privacy">Privacy</Link>
             </div>
 
+            {/* MOBILE */}
             <details className="md:hidden">
               <summary className="list-none cursor-pointer px-3 py-2 rounded-lg border text-sm">Menu</summary>
               <div className="mt-2 bg-white border rounded-xl p-3 flex flex-col text-sm">
@@ -52,6 +56,8 @@ export default function RootLayout({ children }) {
                 <Link href="/tiktok" className="py-2">TikTok</Link>
                 <Link href="/tuscany" className="py-2">Tuscany</Link>
                 <Link href="/discover" className="py-2">Discover</Link>
+                <Link href="/made-in-italy" className="py-2">Made in Italy</Link>
+                <Link href="/xmas-deals" className="py-2">Promo Natale</Link>
                 <Link href="/about" className="py-2">About</Link>
                 <Link href="/contact" className="py-2">Contact</Link>
                 <Link href="/privacy" className="py-2">Privacy</Link>
@@ -60,10 +66,12 @@ export default function RootLayout({ children }) {
           </nav>
         </header>
 
+        {/* MAIN */}
         <main className="pt-[68px] md:pt-[84px] mx-auto max-w-6xl px-4 md:px-6 py-6 md:py-10">
           {children}
         </main>
 
+        {/* FOOTER */}
         <footer className="mt-8 border-t bg-white">
           <div className="mx-auto max-w-6xl px-4 md:px-6 py-3 md:py-4 text-[12px] md:text-sm text-gray-600 flex flex-col md:flex-row gap-2 md:items-center md:justify-between">
             <p>© {new Date().getFullYear()} AcrossBay · All rights reserved.</p>

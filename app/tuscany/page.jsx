@@ -1,33 +1,63 @@
+"use client";
+
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { DICT } from "@/lib/i18n";
+
 export default function Page() {
+  const [lang, setLang] = useState("en");
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("acrossbay_lang");
+      if (saved && DICT[saved]) setLang(saved);
+    } catch {}
+  }, []);
+  const T = (DICT[lang] ?? DICT.en).pages.tuscany;
+
+  const cards = [
+    {
+      key: "linenShirt",
+      img: "/linen-shirt.webp",
+      href: "/made-in-italy",
+    },
+    {
+      key: "terracottaVase",
+      img: "/ceramics.jpg",
+      href: "/tuscany",
+    },
+    {
+      key: "leatherBag",
+      img: "/leather-bag.jpg",
+      href: "/made-in-italy",
+    },
+  ];
+
   return (
-    <main className="p-8 bg-white text-gray-800">
-      <h1 className="text-3xl font-bold mb-6">Tuscany · AcrossBay</h1>
-      <p className="mb-8 text-gray-600">
-        Ispirazione mediterranea e prodotti Made in Italy: stile naturale e materiali autentici.
-      </p>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div className="border rounded-2xl p-4 shadow-sm">
-          <img src="/images/linen-shirt.webp" alt="Linen Shirt" className="rounded-xl mb-3" />
-          <h2 className="font-semibold text-lg mb-1">Linen Shirt Toscana</h2>
-          <p className="text-sm mb-3">Camicia in lino italiano, fresca e leggera per ogni stagione.</p>
-          <a href="#" className="text-teal-600 font-semibold">View Product →</a>
-        </div>
-
-        <div className="border rounded-2xl p-4 shadow-sm">
-          <img src="/images/terracotta-vase.webp" alt="Terracotta Vase" className="rounded-xl mb-3" />
-          <h2 className="font-semibold text-lg mb-1">Terracotta Vase</h2>
-          <p className="text-sm mb-3">Artigianato toscano autentico con smaltatura sabbia naturale.</p>
-          <a href="#" className="text-teal-600 font-semibold">View Product →</a>
-        </div>
-
-        <div className="border rounded-2xl p-4 shadow-sm">
-          <img src="/images/leather-bag.webp" alt="Leather Bag" className="rounded-xl mb-3" />
-          <h2 className="font-semibold text-lg mb-1">Leather Bag Firenze</h2>
-          <p className="text-sm mb-3">Borsa in pelle conciata al vegetale, interamente Made in Italy.</p>
-          <a href="#" className="text-teal-600 font-semibold">View Product →</a>
-        </div>
+    <section className="space-y-6 md:space-y-8">
+      <div className="rounded-2xl bg-gray-50 p-5 md:p-8">
+        <h1 className="text-2xl md:text-3xl font-bold mb-2">{T.title} · AcrossBay</h1>
+        <p className="text-gray-700 text-sm md:text-base">
+          {T.subtitle}
+        </p>
       </div>
-    </main>
+
+      <div className="grid gap-4 sm:gap-6 grid-cols-2 md:grid-cols-3">
+        {cards.map((c) => {
+          const copy = T.items[c.key];
+          return (
+            <Link key={c.key} href={c.href} className="block border rounded-2xl overflow-hidden bg-white hover:shadow">
+              <div className="aspect-[4/3] w-full overflow-hidden">
+                <img src={c.img} alt={copy.title} className="w-full h-full object-cover" />
+              </div>
+              <div className="p-3 md:p-4">
+                <h3 className="font-semibold text-sm md:text-base">{copy.title}</h3>
+                <p className="text-xs md:text-sm text-gray-500">{copy.desc}</p>
+                <p className="text-xs md:text-sm text-gray-600 mt-1">{copy.cta}</p>
+              </div>
+            </Link>
+          );
+        })}
+      </div>
+    </section>
   );
 }

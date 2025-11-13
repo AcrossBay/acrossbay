@@ -1,34 +1,38 @@
+"use client";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { DICT } from "@/lib/i18n";
 
-export default function Page() {
-  const picks = [
-    { t: "Smart Lamp Minimal",    img: "/lamp-smart.webp",        href: "/amazon"  },
-    { t: "Retro Console",         img: "/retro-console.webp",     href: "/ebay"    },
-    { t: "LED Strip RGB",         img: "/led-strip.webp",         href: "/tiktok"  },
-    { t: "Linen Shirt Tuscany",   img: "/linen-shirt.webp",       href: "/tuscany" },
+export default function Page(){
+  const [lang,setLang]=useState("en");
+  useEffect(()=>{try{const s=localStorage.getItem("acrossbay_lang"); if(s&&DICT[s]) setLang(s);}catch{}},[]);
+  const T=(DICT[lang]??DICT.en).pages.discover;
+
+  const cards=[
+    { key:"amazon", img:"/projector.jpg", href:"/amazon" },
+    { key:"ebay",   img:"/retro-console.webp", href:"/ebay" },
+    { key:"tiktok", img:"/lamp-smart.webp", href:"/tiktok" },
   ];
 
   return (
     <section className="space-y-6 md:space-y-8">
       <div className="rounded-2xl bg-gray-50 p-5 md:p-8">
-        <h1 className="text-2xl md:text-3xl font-bold mb-2">Discover · Daily Picks</h1>
-        <p className="text-gray-600 text-sm md:text-base">
-          Selezione curatoriale aggiornata: tech-lifestyle, virali e Made in Italy.
-        </p>
+        <h1 className="text-2xl md:text-3xl font-bold mb-2">{T.title} · AcrossBay</h1>
+        <p className="text-gray-700 text-sm md:text-base">{T.subtitle}</p>
       </div>
-
-      <div className="grid gap-4 sm:gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {picks.map((c, i) => (
-          <Link key={i} href={c.href} className="block border rounded-2xl overflow-hidden hover:shadow bg-white">
-            <div className="aspect-[4/3] w-full overflow-hidden">
-              <img src={c.img} alt={c.t} className="w-full h-full object-cover" />
-            </div>
-            <div className="p-3 md:p-4">
-              <h3 className="font-semibold text-sm md:text-base">{c.t}</h3>
-              <p className="text-xs md:text-sm text-gray-500">Apri selezione →</p>
-            </div>
-          </Link>
-        ))}
+      <div className="grid gap-4 sm:gap-6 grid-cols-2 md:grid-cols-3">
+        {cards.map(c=>{
+          const copy=T.items[c.key];
+          return (
+            <Link key={c.key} href={c.href} className="block border rounded-2xl overflow-hidden bg-white hover:shadow">
+              <div className="aspect-[4/3]"><img src={c.img} alt={copy.title} className="w-full h-full object-cover"/></div>
+              <div className="p-3 md:p-4">
+                <h3 className="font-semibold text-sm md:text-base">{copy.title}</h3>
+                <p className="text-xs md:text-sm text-gray-600 mt-1">{copy.cta}</p>
+              </div>
+            </Link>
+          );
+        })}
       </div>
     </section>
   );

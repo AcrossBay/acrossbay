@@ -1,18 +1,28 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { DICT } from "@/lib/i18n";
 
 export default function Page() {
+  const [lang, setLang] = useState("en");
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("acrossbay_lang");
+      if (saved && DICT[saved]) setLang(saved);
+    } catch {}
+  }, []);
+  const T = DICT[lang] ?? DICT.en;
+
   return (
     <section className="space-y-6 md:space-y-8">
-      {/* Hero compatto su mobile */}
       <div className="rounded-2xl bg-gray-50 p-5 md:p-8">
-        <h1 className="text-3xl md:text-4xl font-bold mb-2">AcrossBay</h1>
+        <h1 className="text-3xl md:text-4xl font-bold mb-2">{T.heroTitle}</h1>
         <p className="text-gray-600 text-sm md:text-base max-w-2xl">
-          Trend 2025: tech-lifestyle minimal e accessibili. Curiamo i migliori prodotti da Amazon, eBay e TikTok,
-          con un tocco mediterraneo “Tuscany”.
+          {T.heroDesc}
         </p>
       </div>
 
-      {/* Griglia responsive con card uniformi */}
       <div className="grid gap-4 sm:gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         <Card title="Amazon"  href="/amazon"  img="/projector-mini.webp" />
         <Card title="eBay"    href="/ebay"    img="/retro-console.webp" />
@@ -31,7 +41,7 @@ function Card({ title, href, img }) {
       </div>
       <div className="p-3 md:p-4">
         <h3 className="font-semibold text-sm md:text-base">{title}</h3>
-        <p className="text-xs md:text-sm text-gray-500">Scopri la selezione {title} →</p>
+        <p className="text-xs md:text-sm text-gray-500">Discover the {title} picks →</p>
       </div>
     </Link>
   );

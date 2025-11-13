@@ -1,49 +1,39 @@
-"use client";
+import Image from "next/image";
+import { getEbayLink } from "../lib/links";
 
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { DICT } from "@/lib/i18n";
+export const metadata = {
+  title: "eBay Deals · AcrossBay",
+  description: "Curated eBay tech & lifestyle deals.",
+};
 
 export default function Page() {
-  const [lang, setLang] = useState("en");
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem("acrossbay_lang");
-      if (saved && DICT[saved]) setLang(saved);
-    } catch {}
-  }, []);
-  const T = (DICT[lang] ?? DICT.en).pages.ebay;
-
-  const cards = [
-    { key: "retroConsole", img: "/retro-console.webp", href: "/ebay" },
-    { key: "leatherBag",   img: "/leather-bag.jpg",    href: "/ebay" },
-    { key: "ledStrip",     img: "/led-strip.webp",     href: "/ebay" },
+  const items = [
+    { title: "Retro Console", img: "/retro-console.webp", url: "https://www.ebay.co.uk/itm/1234567890" },
+    { title: "LED Strip Set", img: "/led-strip.webp", url: "https://www.ebay.co.uk/itm/2345678901" },
+    { title: "Linen Shirt", img: "/linen-shirt.webp", url: "https://www.ebay.co.uk/itm/3456789012" },
   ];
 
   return (
-    <section className="space-y-6 md:space-y-8">
-      <div className="rounded-2xl bg-gray-50 p-5 md:p-8">
-        <h1 className="text-2xl md:text-3xl font-bold mb-2">{T.title} · AcrossBay</h1>
-        <p className="text-gray-700 text-sm md:text-base">{T.subtitle}</p>
-      </div>
+    <main className="mx-auto max-w-6xl px-4 py-8 space-y-6">
+      <h1 className="text-2xl font-bold">eBay · AcrossBay</h1>
+      <p className="text-gray-600">Selected deals via eBay Partner Network.</p>
 
-      <div className="grid gap-4 sm:gap-6 grid-cols-2 md:grid-cols-3">
-        {cards.map((c) => {
-          const copy = T.items[c.key];
-          return (
-            <Link key={c.key} href={c.href} className="block border rounded-2xl overflow-hidden bg-white hover:shadow">
-              <div className="aspect-[4/3] w-full overflow-hidden">
-                <img src={c.img} alt={copy.title} className="w-full h-full object-cover" />
-              </div>
-              <div className="p-3 md:p-4">
-                <h3 className="font-semibold text-sm md:text-base">{copy.title}</h3>
-                <p className="text-xs md:text-sm text-gray-500">{copy.desc}</p>
-                <p className="text-xs md:text-sm text-gray-600 mt-1">{copy.cta}</p>
-              </div>
-            </Link>
-          );
-        })}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {items.map((it) => (
+          <div key={it.title} className="border rounded-2xl p-4 shadow-sm">
+            <Image src={it.img} alt={it.title} width={800} height={600} className="rounded-xl" />
+            <h2 className="mt-3 font-semibold">{it.title}</h2>
+            <a
+              href={getEbayLink(it.url)}
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+              className="text-teal-600 font-medium mt-1 inline-block"
+            >
+              View on eBay →
+            </a>
+          </div>
+        ))}
       </div>
-    </section>
+    </main>
   );
 }

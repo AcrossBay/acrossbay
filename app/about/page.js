@@ -1,22 +1,18 @@
-export default function AboutPage() {
+"use client";
+import { useEffect, useState } from "react";
+import { DICT } from "@/lib/i18n";
+
+export default function Page(){
+  const [lang,setLang]=useState("en");
+  useEffect(()=>{try{const s=localStorage.getItem("acrossbay_lang"); if(s&&DICT[s]) setLang(s);}catch{}},[]);
+  const T=(DICT[lang]??DICT.en).pages.about;
+
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen bg-white text-gray-800 px-6 py-16">
-      <section className="max-w-3xl text-center space-y-6">
-        <h1 className="text-4xl font-bold text-teal-700">About AcrossBay</h1>
-        <p className="text-lg leading-relaxed text-gray-600">
-          AcrossBay is a digital platform designed to help users explore and compare products 
-          across multiple global marketplaces — starting with eBay, Amazon, and TikTok Shop.
-        </p>
-        <p className="text-lg leading-relaxed text-gray-600">
-          Our mission is to make international discovery effortless. Whether you're a shopper 
-          looking for unique deals abroad or a small business aiming to expand reach, 
-          AcrossBay connects you with the right offers, transparently and intelligently.
-        </p>
-        <p className="text-lg leading-relaxed text-gray-600">
-          Built with a focus on simplicity, reliability, and design — AcrossBay embodies 
-          a smart, modern, and Mediterranean-inspired lifestyle.
-        </p>
-      </section>
-    </main>
+    <section className="space-y-6 md:space-y-8">
+      <div className="rounded-2xl bg-gray-50 p-5 md:p-8">
+        <h1 className="text-2xl md:text-3xl font-bold mb-2">{T.title}</h1>
+        <p className="text-gray-700 text-sm md:text-base">{T.body}</p>
+      </div>
+    </section>
   );
 }

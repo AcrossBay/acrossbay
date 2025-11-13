@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.across-bay.com/sitemap.xml
+Sitemap: https://across-bay.com/sitemap.xml

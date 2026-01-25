@@ -1,39 +1,51 @@
-// FILE: components/LanguageSwitcher.jsx
-// AZIONE: SOSTITUISCI TUTTO IL CONTENUTO DEL FILE CON QUESTO BLOCCO
-
 "use client";
 
-import { usePathname } from "next/navigation";
-import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
-function pathWithLocale(pathname, locale) {
-  const p = pathname || "/";
-  const parts = p.split("/").filter(Boolean);
-
-  // se il primo segmento è una lingua, rimpiazzala
-  if (parts[0] === "it" || parts[0] === "en" || parts[0] === "ro" || parts[0] === "bg") {
-    parts[0] = locale;
-  } else {
-    parts.unshift(locale);
-  }
-
-  return "/" + parts.join("/");
-}
+const LANGS = [
+  { code: "it", label: "IT", flag: "🇮🇹" },
+  { code: "en", label: "EN", flag: "🇬🇧" },
+];
 
 export default function LanguageSwitcher() {
-  const pathname = usePathname();
+  const pathname = usePathname() || "/";
+  const router = useRouter();
 
-  const itHref = pathWithLocale(pathname, "it");
-  const enHref = pathWithLocale(pathname, "en");
+  // prende il locale corrente dal path: /it/... o /en/...
+  const parts = pathname.split("/").filter(Boolean);
+  const currentLocale = parts[0] === "it" || parts[0] === "en" ? parts[0] : "it";
+
+  function switchTo(nextLocale) {
+    if (nextLocale === currentLocale) return;
+
+    // sostituisce il primo segmento con il locale scelto
+    const rest = parts.slice(1); // tutto dopo il locale
+    const nextPath = "/" + [nextLocale, ...rest].join("/");
+    router.push(nextPath);
+  }
 
   return (
-    <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-      <Link href={itHref} title="Italiano" style={{ textDecoration: "none" }}>
-        🇮🇹
-      </Link>
-      <Link href={enHref} title="English" style={{ textDecoration: "none" }}>
-        🇬🇧
-      </Link>
+    <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+      {LANGS.map((l) => (
+        <button
+          key={l.code}
+          onClick={() => switchTo(l.code)}
+          aria-label={l.label}
+          title={l.label}
+          style={{
+            border: "1px solid rgba(0,0,0,0.15)",
+            background: l.code === currentLocale ? "rgba(0,0,0,0.06)" : "transparent",
+            borderRadius: 10,
+            padding: "6px 10px",
+            cursor: "pointer",
+            lineHeight: 1,
+            fontSize: 16,
+          }}
+        >
+          <span style={{ marginRight: 6 }}>{l.flag}</span>
+          <span style={{ fontSize: 12, fontWeight: 600 }}>{l.label}</span>
+        </button>
+      ))}
     </div>
   );
 }

@@ -60,21 +60,6 @@ export default function Header() {
               </Link>
             ))}
           </nav>
-
-          <select
-            value={lang.toUpperCase()}
-            onChange={(e) => {
-              const newLang = e.target.value.toLowerCase();
-              router.push(withLang(newLang, pathname));
-            }}
-            className="rounded-md border border-gray-300 bg-white px-2 py-1 text-sm text-gray-700"
-            aria-label="Language"
-          >
-            <option value="IT">IT</option>
-            <option value="EN">EN</option>
-            <option value="RO">RO</option>
-            <option value="BG">BG</option>
-          </select>
         </div>
       </div>
 

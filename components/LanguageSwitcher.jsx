@@ -1,57 +1,44 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { LOCALES, DEFAULT_LOCALE } from "../lib/links";
 
-const FLAGS = {
-  it: "🇮🇹",
-  en: "🇬🇧",
-};
-
-function getLocaleFromPath(pathname) {
-  const seg = (pathname || "/").split("/")[1];
-  return LOCALES.includes(seg) ? seg : null;
-}
-
-function stripLocale(pathname) {
-  const parts = (pathname || "/").split("/");
-  const seg = parts[1];
-  if (LOCALES.includes(seg)) {
-    const rest = "/" + parts.slice(2).join("/");
-    return rest === "/" ? "/" : rest.replace(/\/+$/, "") || "/";
-  }
-  return pathname || "/";
-}
+const LANGUAGES = [
+  { code: "it", label: "IT" },
+  { code: "en", label: "EN" },
+];
 
 export default function LanguageSwitcher() {
+  const pathname = usePathname();
   const router = useRouter();
-  const pathname = usePathname() || "/";
-  const current = getLocaleFromPath(pathname) || DEFAULT_LOCALE;
-  const rest = stripLocale(pathname);
 
-  const go = (code) => {
-    // Con middleware disattivo: usiamo query semplice
-    // /?lang=en  oppure /?lang=it
-    const target = rest === "/" ? `/?lang=${code}` : `${rest}?lang=${code}`;
-    router.push(target);
+  const currentLang = pathname.split("/")[1] === "en" ? "en" : "it";
+
+  const switchLanguage = (lang) => {
+    if (lang === currentLang) return;
+
+    const segments = pathname.split("/").filter(Boolean);
+
+    if (segments[0] === "it" || segments[0] === "en") {
+      segments[0] = lang;
+    } else {
+      segments.unshift(lang);
+    }
+
+    router.push("/" + segments.join("/"));
   };
 
   return (
-    <div className="flex items-center gap-2">
-      {["it", "en"].map((code) => (
-        <button
-          key={code}
-          type="button"
-          onClick={() => go(code)}
-          className={`px-2 py-1 rounded border text-sm ${
-            current === code
-              ? "bg-gray-900 text-white border-gray-900"
-              : "bg-white text-gray-700 border-gray-200"
-          }`}
-        >
-          {FLAGS[code]}
-        </button>
-      ))}
+    <div style={{ position: "relative" }}>
+      <select
+        value={currentLang.toUpperCase()}
+        onChange={(e) => switchLanguage(e.target.value.toLowerCase())}
+      >
+        {LANGUAGES.map((l) => (
+          <option key={l.code} value={l.label}>
+            {l.label}
+          </option>
+        ))}
+      </select>
     </div>
   );
 }

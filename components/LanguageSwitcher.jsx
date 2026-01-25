@@ -1,36 +1,34 @@
 "use client";
 
-import { LANGS } from "@/lib/i18n";
-import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
-export default function LanguageSwitcher({ value, onChange }) {
-  const [lang, setLang] = useState(value || "en");
+export default function LanguageSwitcher() {
+  const pathname = usePathname() || "/";
+  const router = useRouter();
 
-  useEffect(() => {
-    setLang(value || "en");
-  }, [value]);
+  const current = pathname.startsWith("/en") ? "en" : "it";
 
-  const handle = (e) => {
-    const v = e.target.value;
-    setLang(v);
-    try {
-      localStorage.setItem("acrossbay_lang", v);
-    } catch {}
-    onChange?.(v);
-  };
+  function toLocalePath(nextLocale) {
+    let p = pathname;
+
+    if (p.startsWith("/en")) p = p.slice(3) || "/";
+    if (p.startsWith("/it")) p = p.slice(3) || "/";
+
+    if (!p.startsWith("/")) p = "/" + p;
+
+    if (nextLocale === "en") return "/en" + (p === "/" ? "" : p);
+    return "/it" + (p === "/" ? "" : p);
+  }
 
   return (
     <select
-      value={lang}
-      onChange={handle}
-      className="border rounded-lg px-2 py-1 text-sm bg-white"
+      value={current}
+      onChange={(e) => router.push(toLocalePath(e.target.value))}
+      className="border border-gray-300 rounded px-2 py-1 text-sm"
       aria-label="Language"
     >
-      {LANGS.map((l) => (
-        <option key={l} value={l}>
-          {l.toUpperCase()}
-        </option>
-      ))}
+      <option value="it">IT</option>
+      <option value="en">EN</option>
     </select>
   );
 }

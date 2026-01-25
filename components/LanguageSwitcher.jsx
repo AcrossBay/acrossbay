@@ -11,34 +11,28 @@ export default function LanguageSwitcher() {
   const pathname = usePathname();
   const router = useRouter();
 
-  const currentLang = pathname.split("/")[1] === "en" ? "en" : "it";
+  const currentLang = pathname.startsWith("/en") ? "en" : "it";
 
-  const switchLanguage = (lang) => {
+  function switchLanguage(lang) {
     if (lang === currentLang) return;
 
-    const segments = pathname.split("/").filter(Boolean);
-
-    if (segments[0] === "it" || segments[0] === "en") {
-      segments[0] = lang;
+    if (lang === "en") {
+      router.push("/en");
     } else {
-      segments.unshift(lang);
+      router.push("/");
     }
-
-    router.push("/" + segments.join("/"));
-  };
+  }
 
   return (
-    <div style={{ position: "relative" }}>
-      <select
-        value={currentLang.toUpperCase()}
-        onChange={(e) => switchLanguage(e.target.value.toLowerCase())}
-      >
-        {LANGUAGES.map((l) => (
-          <option key={l.code} value={l.label}>
-            {l.label}
-          </option>
-        ))}
-      </select>
-    </div>
+    <select
+      value={currentLang}
+      onChange={(e) => switchLanguage(e.target.value)}
+    >
+      {LANGUAGES.map((l) => (
+        <option key={l.code} value={l.code}>
+          {l.label}
+        </option>
+      ))}
+    </select>
   );
 }

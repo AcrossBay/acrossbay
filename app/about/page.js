@@ -1,18 +1,39 @@
-"use client";
-import { useEffect, useState } from "react";
-import { DICT } from "@/lib/i18n";
-
-export default function Page(){
-  const [lang,setLang]=useState("en");
-  useEffect(()=>{try{const s=localStorage.getItem("acrossbay_lang"); if(s&&DICT[s]) setLang(s);}catch{}},[]);
-  const T=(DICT[lang]??DICT.en).pages.about;
-
+export default function AboutPage() {
   return (
-    <section className="space-y-6 md:space-y-8">
-      <div className="rounded-2xl bg-gray-50 p-5 md:p-8">
-        <h1 className="text-2xl md:text-3xl font-bold mb-2">{T.title}</h1>
-        <p className="text-gray-700 text-sm md:text-base">{T.body}</p>
+    <div className="mx-auto max-w-6xl px-4 py-14">
+      <div className="mx-auto max-w-3xl">
+        <h1 className="text-4xl font-semibold tracking-tight md:text-5xl">
+          About AcrossBay
+        </h1>
+
+        <p className="mt-6 text-base text-gray-600 md:text-lg">
+          AcrossBay non è un marketplace. È una selezione curata: pochi prodotti, scelti per qualità,
+          utilità reale e coerenza. Qui non puntiamo sull’acquisto impulsivo.
+        </p>
+
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <div className="rounded-2xl border bg-white p-5 shadow-sm">
+            <h3 className="text-base font-semibold">Selezione</h3>
+            <p className="mt-2 text-sm text-gray-600">
+              Pochi elementi. Ogni scelta deve avere un perché (materiali, funzione, affidabilità).
+            </p>
+          </div>
+
+          <div className="rounded-2xl border bg-white p-5 shadow-sm">
+            <h3 className="text-base font-semibold">Contesto</h3>
+            <p className="mt-2 text-sm text-gray-600">
+              Spieghiamo a cosa serve, per chi è, e cosa aspettarsi. Niente “miracoli”.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border bg-white p-5 shadow-sm">
+            <h3 className="text-base font-semibold">Semplicità</h3>
+            <p className="mt-2 text-sm text-gray-600">
+              Una vetrina chiara: pochi blocchi, poche scelte, percorso semplice.
+            </p>
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
   );
 }

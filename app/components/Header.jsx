@@ -1,26 +1,37 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Header() {
+  const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/health", label: "Selezione" },
+    { href: "/about", label: "About" },
+    { href: "/contact", label: "Contact" },
+    { href: "/privacy", label: "Privacy" },
+  ];
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
-        <Link href="/" className="font-semibold">
-          AcrossBay
+        <Link href="/" className="flex items-center gap-2">
+          <Image
+            src="/acrossbay-logo.png"
+            alt="AcrossBay"
+            width={180}
+            height={40}
+            priority
+          />
         </Link>
 
         <nav className="flex items-center gap-6 text-sm font-medium text-gray-700">
-          <Link href="/" className="hover:text-black">Home</Link>
-          <Link href="/health" className="hover:text-black">Selezione</Link>
-          <Link href="/about" className="hover:text-black">About</Link>
-          <Link href="/contact" className="hover:text-black">Contact</Link>
-          <Link href="/privacy" className="hover:text-black">Privacy</Link>
+          {navLinks.map((l) => (
+            <Link key={l.href} href={l.href} className="hover:text-black">
+              {l.label}
+            </Link>
+          ))}
         </nav>
-      </div>
-
-      <div className="mx-auto max-w-6xl px-4 py-2 text-sm font-semibold">
-        HEADER TEST
       </div>
     </header>
   );

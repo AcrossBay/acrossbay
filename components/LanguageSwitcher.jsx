@@ -1,76 +1,39 @@
-// acrossbay/components/LanguageSwitcher.jsx
+// FILE: components/LanguageSwitcher.jsx
+// AZIONE: SOSTITUISCI TUTTO IL CONTENUTO DEL FILE CON QUESTO BLOCCO
+
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
-const LOCALES = ["it", "en"];
-const DEFAULT_LOCALE = "it";
+function pathWithLocale(pathname, locale) {
+  const p = pathname || "/";
+  const parts = p.split("/").filter(Boolean);
 
-function getLocaleFromPath(pathname) {
-  const seg = pathname.split("/")[1];
-  return LOCALES.includes(seg) ? seg : DEFAULT_LOCALE;
-}
-
-function buildPathWithLocale(pathname, nextLocale) {
-  const parts = pathname.split("/");
-  const current = parts[1];
-
-  if (LOCALES.includes(current)) {
-    parts[1] = nextLocale; // replace locale segment
-    return parts.join("/") || "/";
+  // se il primo segmento è una lingua, rimpiazzala
+  if (parts[0] === "it" || parts[0] === "en" || parts[0] === "ro" || parts[0] === "bg") {
+    parts[0] = locale;
+  } else {
+    parts.unshift(locale);
   }
 
-  // no locale segment -> prefix it
-  return `/${nextLocale}${pathname.startsWith("/") ? "" : "/"}${pathname}`;
+  return "/" + parts.join("/");
 }
 
 export default function LanguageSwitcher() {
-  const pathname = usePathname() || "/";
-  const router = useRouter();
-  const currentLocale = getLocaleFromPath(pathname);
+  const pathname = usePathname();
 
-  const go = (locale) => {
-    const nextPath = buildPathWithLocale(pathname, locale);
-    router.push(nextPath);
-  };
+  const itHref = pathWithLocale(pathname, "it");
+  const enHref = pathWithLocale(pathname, "en");
 
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-      <button
-        type="button"
-        onClick={() => go("it")}
-        title="Italiano"
-        aria-label="Italiano"
-        style={{
-          fontSize: 18,
-          lineHeight: 1,
-          opacity: currentLocale === "it" ? 1 : 0.5,
-          cursor: "pointer",
-          background: "transparent",
-          border: "none",
-          padding: 0,
-        }}
-      >
+    <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+      <Link href={itHref} title="Italiano" style={{ textDecoration: "none" }}>
         🇮🇹
-      </button>
-
-      <button
-        type="button"
-        onClick={() => go("en")}
-        title="English"
-        aria-label="English"
-        style={{
-          fontSize: 18,
-          lineHeight: 1,
-          opacity: currentLocale === "en" ? 1 : 0.5,
-          cursor: "pointer",
-          background: "transparent",
-          border: "none",
-          padding: 0,
-        }}
-      >
+      </Link>
+      <Link href={enHref} title="English" style={{ textDecoration: "none" }}>
         🇬🇧
-      </button>
+      </Link>
     </div>
   );
 }

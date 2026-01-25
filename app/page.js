@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 
 export default function HomePage() {
   const cards = [
@@ -24,14 +23,16 @@ export default function HomePage() {
 
   return (
     <main className="mx-auto max-w-6xl px-6 py-14">
+      {/* HERO */}
       <section className="text-center">
         <h1 className="mx-auto max-w-3xl text-4xl md:text-5xl font-semibold tracking-tight text-gray-900">
           Strumenti e prodotti che richiedono conoscenza, non acquisto impulsivo.
         </h1>
 
         <p className="mx-auto mt-5 max-w-2xl text-base md:text-lg text-gray-600">
-          AcrossBay seleziona prodotti di alta qualità legati al benessere, alla cura personale e alla vita
-          quotidiana. Pochi elementi, scelti e spiegati.
+          AcrossBay seleziona prodotti di alta qualità legati al benessere,
+          alla cura personale e alla vita quotidiana.
+          Pochi elementi, scelti e spiegati.
         </p>
 
         <div className="mt-7 flex items-center justify-center gap-3">
@@ -41,6 +42,7 @@ export default function HomePage() {
           >
             Scopri la selezione
           </Link>
+
           <Link
             href="/about"
             className="rounded-full border border-gray-300 px-5 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50"
@@ -50,21 +52,28 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* CARDS – SOLO VETRINA */}
       <section className="mt-14 grid grid-cols-1 gap-8 md:grid-cols-3">
         {cards.map((c) => (
-          <article key={c.title} className="group rounded-2xl border border-gray-200 bg-white p-5">
-            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-gray-50">
-              <Image
+          <article
+            key={c.title}
+            className="rounded-2xl border border-gray-200 bg-white p-5"
+          >
+            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-gray-100">
+              <img
                 src={c.img}
                 alt={c.title}
-                fill
-                className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-                sizes="(max-width: 768px) 100vw, 33vw"
+                className="h-full w-full object-cover"
               />
             </div>
 
-            <h3 className="mt-4 text-lg font-semibold text-gray-900">{c.title}</h3>
-            <p className="mt-2 text-sm text-gray-600">{c.desc}</p>
+            <h3 className="mt-4 text-lg font-semibold text-gray-900">
+              {c.title}
+            </h3>
+
+            <p className="mt-2 text-sm text-gray-600">
+              {c.desc}
+            </p>
           </article>
         ))}
       </section>

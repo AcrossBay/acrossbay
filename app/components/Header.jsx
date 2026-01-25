@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 
 export default function Header() {
   const navLinks = [
@@ -15,14 +14,9 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
-        <Link href="/" className="flex items-center gap-2">
-          <Image
-            src="/acrossbay-logo.png"
-            alt="AcrossBay"
-            width={180}
-            height={40}
-            priority
-          />
+        <Link href="/" className="text-xl font-semibold">
+          <span className="text-black">Across</span>
+          <span className="text-blue-600">Bay</span>
         </Link>
 
         <nav className="flex items-center gap-6 text-sm font-medium text-gray-700">

@@ -6,7 +6,7 @@ export default function HomePage() {
   const cards = [
     {
       title: "Recupero & cura personale",
-      desc: "Strumenti seri, spiegati bene. Non gadget.",
+      desc: "Strumenti seri, spiegati bene. Nessun gadget.",
       img: "/images/recovery-care.jpg",
     },
     {
@@ -22,59 +22,47 @@ export default function HomePage() {
   ];
 
   return (
-    <main className="mx-auto max-w-6xl px-6 py-14">
-      {/* HERO */}
-      <section className="text-center">
-        <h1 className="mx-auto max-w-3xl text-4xl md:text-5xl font-semibold tracking-tight text-gray-900">
-          Strumenti e prodotti che richiedono conoscenza, non acquisto impulsivo.
-        </h1>
+    <main className="px-6 py-16 max-w-6xl mx-auto">
+      <h1 className="text-4xl font-semibold mb-4 text-center">
+        Strumenti e prodotti che richiedono conoscenza, non acquisto impulsivo.
+      </h1>
 
-        <p className="mx-auto mt-5 max-w-2xl text-base md:text-lg text-gray-600">
-          AcrossBay seleziona prodotti di alta qualità legati al benessere,
-          alla cura personale e alla vita quotidiana.
-          Pochi elementi, scelti e spiegati.
-        </p>
+      <p className="text-center text-gray-600 mb-10">
+        AcrossBay seleziona prodotti di alta qualità legati al benessere e alla
+        vita quotidiana. Pochi elementi, scelti e spiegati.
+      </p>
 
-        <div className="mt-7 flex items-center justify-center gap-3">
-          <Link
-            href="/health"
-            className="rounded-full bg-gray-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-gray-800"
+      <div className="flex justify-center gap-4 mb-16">
+        <Link
+          href="/selezione"
+          className="px-6 py-3 rounded-full bg-black text-white"
+        >
+          Scopri la selezione
+        </Link>
+        <Link
+          href="/about"
+          className="px-6 py-3 rounded-full border"
+        >
+          Approccio
+        </Link>
+      </div>
+
+      <section className="grid md:grid-cols-3 gap-8">
+        {cards.map((card) => (
+          <div
+            key={card.title}
+            className="border rounded-2xl overflow-hidden bg-white"
           >
-            Scopri la selezione
-          </Link>
-
-          <Link
-            href="/about"
-            className="rounded-full border border-gray-300 px-5 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50"
-          >
-            Approccio
-          </Link>
-        </div>
-      </section>
-
-      {/* CARDS – SOLO VETRINA */}
-      <section className="mt-14 grid grid-cols-1 gap-8 md:grid-cols-3">
-        {cards.map((c) => (
-          <article
-            key={c.title}
-            className="rounded-2xl border border-gray-200 bg-white p-5"
-          >
-            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-gray-100">
-              <img
-                src={c.img}
-                alt={c.title}
-                className="h-full w-full object-cover"
-              />
+            <img
+              src={card.img}
+              alt={card.title}
+              className="w-full h-48 object-cover"
+            />
+            <div className="p-4">
+              <h3 className="font-medium mb-1">{card.title}</h3>
+              <p className="text-sm text-gray-600">{card.desc}</p>
             </div>
-
-            <h3 className="mt-4 text-lg font-semibold text-gray-900">
-              {c.title}
-            </h3>
-
-            <p className="mt-2 text-sm text-gray-600">
-              {c.desc}
-            </p>
-          </article>
+          </div>
         ))}
       </section>
     </main>

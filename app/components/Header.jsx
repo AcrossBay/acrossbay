@@ -1,45 +1,51 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Header() {
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const isEn = pathname.startsWith("/en");
+
+  const switchTo = (lang) => {
+    if (lang === "en") {
+      router.push(pathname === "/" ? "/en" : `/en${pathname}`);
+    } else {
+      router.push(pathname.replace(/^\/en/, "") || "/");
+    }
+  };
+
   return (
-    <header className="border-b border-gray-200 px-6 py-4">
-      <div className="mx-auto flex max-w-6xl items-center justify-between">
-        {/* Left: logo / brand */}
-        <Link href="/" className="text-lg font-semibold text-gray-900">
+    <header className="border-b">
+      <nav className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <Link href={isEn ? "/en" : "/"} className="font-semibold">
           AcrossBay
         </Link>
 
-        {/* Center: nav */}
-        <nav className="flex items-center gap-6 text-sm font-medium text-gray-700">
-          <Link href="/">Home</Link>
-          <Link href="/health">Selezione</Link>
-          <Link href="/about">About</Link>
-          <Link href="/contact">Contact</Link>
-          <Link href="/privacy">Privacy</Link>
-        </nav>
+        <div className="flex gap-6 items-center">
+          <Link href={isEn ? "/en" : "/"}>Home</Link>
+          <Link href={isEn ? "/en/selezione" : "/selezione"}>Selezione</Link>
+          <Link href={isEn ? "/en/about" : "/about"}>About</Link>
+          <Link href={isEn ? "/en/contact" : "/contact"}>Contact</Link>
 
-        {/* Right: language (IT/EN only) */}
-        <div className="flex items-center gap-2">
-          <a
-            href="/it"
-            className="rounded-md border border-gray-300 bg-white px-2 py-1 text-sm text-gray-700"
-            aria-label="Italiano"
-            title="Italiano"
-          >
-            IT
-          </a>
-          <a
-            href="/en"
-            className="rounded-md border border-gray-300 bg-white px-2 py-1 text-sm text-gray-700"
-            aria-label="English"
-            title="English"
-          >
-            EN
-          </a>
+          <div className="flex gap-2 ml-4">
+            <button
+              onClick={() => switchTo("it")}
+              className={!isEn ? "font-bold" : ""}
+            >
+              IT
+            </button>
+            <button
+              onClick={() => switchTo("en")}
+              className={isEn ? "font-bold" : ""}
+            >
+              EN
+            </button>
+          </div>
         </div>
-      </div>
+      </nav>
     </header>
   );
 }

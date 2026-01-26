@@ -5,7 +5,6 @@ import { usePathname, useRouter } from "next/navigation";
 import { useMemo } from "react";
 
 function getLocaleFromPath(pathname) {
-  // supporta: /en/..., oppure default IT senza prefisso
   const seg = (pathname || "/").split("/").filter(Boolean)[0];
   return seg === "en" ? "en" : "it";
 }
@@ -17,7 +16,6 @@ function stripLocale(pathname) {
 }
 
 function withLocale(locale, path) {
-  // path deve iniziare con "/"
   const clean = path.startsWith("/") ? path : `/${path}`;
   return locale === "en" ? `/en${clean === "/" ? "" : clean}` : clean;
 }
@@ -34,18 +32,15 @@ export default function Header() {
       : { home: "Home", selection: "Selezione", about: "About", contact: "Contact", privacy: "Privacy" };
   }, [locale]);
 
-  // QUI decidi i percorsi reali delle pagine (non i testi).
-  // Se la tua "Selezione" è /discover invece di /selezione, cambia SOLO hrefSelection qui sotto.
   const hrefHome = withLocale(locale, "/");
-  const hrefSelection = withLocale(locale, "/selezione");
+  const hrefSelection = withLocale(locale, "/health");   // <-- QUI
   const hrefAbout = withLocale(locale, "/about");
   const hrefContact = withLocale(locale, "/contact");
   const hrefPrivacy = withLocale(locale, "/privacy");
 
   function switchLang(nextLocale) {
-    const base = stripLocale(pathname); // es: "/about" o "/selezione/xyz"
-    const nextPath = withLocale(nextLocale, base === "" ? "/" : base);
-    router.push(nextPath);
+    const base = stripLocale(pathname);
+    router.push(withLocale(nextLocale, base === "" ? "/" : base));
   }
 
   return (
@@ -68,7 +63,6 @@ export default function Header() {
             type="button"
             onClick={() => switchLang("it")}
             className={`px-2 py-1 rounded border text-sm ${locale === "it" ? "border-gray-900" : "border-gray-300"}`}
-            aria-label="Italiano"
           >
             IT
           </button>
@@ -76,7 +70,6 @@ export default function Header() {
             type="button"
             onClick={() => switchLang("en")}
             className={`px-2 py-1 rounded border text-sm ${locale === "en" ? "border-gray-900" : "border-gray-300"}`}
-            aria-label="English"
           >
             EN
           </button>

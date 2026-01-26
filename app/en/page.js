@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-export default function HomePage() {
+export default function HomePageEn() {
   const cards = [
     {
       title: "Recovery & self-care",
@@ -22,47 +22,43 @@ export default function HomePage() {
   ];
 
   return (
-    <main className="px-6 py-16 max-w-6xl mx-auto">
-      <h1 className="text-4xl font-semibold mb-4 text-center">
-        Products that require understanding, not impulse buying.
-      </h1>
+    <main className="mx-auto max-w-6xl px-4 py-10">
+      <section className="text-center">
+        <h1 className="text-4xl md:text-5xl font-semibold tracking-tight">
+          Products that require understanding, not impulse buying.
+        </h1>
+        <p className="mt-4 text-gray-600">
+          AcrossBay curates high-quality items for wellness and everyday life. Few elements, chosen and explained.
+        </p>
 
-      <p className="text-center text-gray-600 mb-10">
-        AcrossBay curates high-quality items for wellness and everyday life.
-        Few elements, chosen and explained.
-      </p>
-
-      <div className="flex justify-center gap-4 mb-16">
-        <Link
-          href="/en/selection"
-          className="px-6 py-3 rounded-full bg-black text-white"
-        >
-          Explore selection
-        </Link>
-        <Link
-          href="/en/about"
-          className="px-6 py-3 rounded-full border"
-        >
-          Approach
-        </Link>
-      </div>
-
-      <section className="grid md:grid-cols-3 gap-8">
-        {cards.map((card) => (
-          <div
-            key={card.title}
-            className="border rounded-2xl overflow-hidden bg-white"
+        <div className="mt-8 flex items-center justify-center gap-4">
+          <Link
+            href="/en/health"
+            className="inline-flex items-center justify-center rounded-full bg-gray-900 px-6 py-3 text-white font-medium"
           >
-            <img
-              src={card.img}
-              alt={card.title}
-              className="w-full h-48 object-cover"
-            />
-            <div className="p-4">
-              <h3 className="font-medium mb-1">{card.title}</h3>
-              <p className="text-sm text-gray-600">{card.desc}</p>
+            Explore selection
+          </Link>
+
+          <Link
+            href="/en/about"
+            className="inline-flex items-center justify-center rounded-full border border-gray-300 px-6 py-3 text-gray-800 font-medium"
+          >
+            Approach
+          </Link>
+        </div>
+      </section>
+
+      <section className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+        {cards.map((c) => (
+          <Link key={c.title} href="/en/health" className="block rounded-2xl border border-gray-200 overflow-hidden">
+            <div className="aspect-[4/3] bg-gray-100">
+              <img src={c.img} alt={c.title} className="h-full w-full object-cover" />
             </div>
-          </div>
+            <div className="p-4">
+              <div className="font-semibold">{c.title}</div>
+              <div className="mt-1 text-sm text-gray-600">{c.desc}</div>
+            </div>
+          </Link>
         ))}
       </section>
     </main>

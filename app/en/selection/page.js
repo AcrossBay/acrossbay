@@ -3,8 +3,8 @@ export default function Page() {
 
   return (
     <main style={{ maxWidth: 900, margin: "0 auto", padding: "40px 16px", fontFamily: "system-ui" }}>
-      <h1 style={{ marginTop: 0 }}>Selezione</h1>
-      <p style={{ color: "#444" }}>Pagina attiva. Qui inserirò prodotti e contenuti.</p>
+      <h1 style={{ marginTop: 0 }}>Selection</h1>
+      <p style={{ color: "#444" }}>Page is live. Products and content will be added here.</p>
 
       <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 18 }}>
         <a
@@ -20,11 +20,11 @@ export default function Page() {
             fontWeight: 800,
           }}
         >
-          Vai al pagamento
+          Go to payment
         </a>
 
         <a
-          href="/"
+          href="/en"
           style={{
             border: "1px solid #ddd",
             color: "#111",
@@ -34,7 +34,7 @@ export default function Page() {
             fontWeight: 800,
           }}
         >
-          Torna Home
+          Back to Home
         </a>
       </div>
     </main>

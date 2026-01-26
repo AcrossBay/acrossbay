@@ -1,16 +1,10 @@
-"use client";
+export default function Page() {
+  const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/bJe3cxd9M8VIdaa9o2kw00";
 
-import Link from "next/link";
-
-const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/bJe3cxd9M8VIdaa9o2kw00";
-
-export default function SelezioneIT() {
   return (
-    <div style={{ maxWidth: 900, margin: "0 auto", padding: "40px 16px", fontFamily: "system-ui" }}>
+    <main style={{ maxWidth: 900, margin: "0 auto", padding: "40px 16px", fontFamily: "system-ui" }}>
       <h1 style={{ marginTop: 0 }}>Selezione</h1>
-      <p style={{ color: "#444" }}>
-        Pagina Selezione attiva (niente più 404). Qui metteremo i prodotti.
-      </p>
+      <p style={{ color: "#444" }}>Pagina attiva. Qui inserirò prodotti e contenuti.</p>
 
       <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 18 }}>
         <a
@@ -23,13 +17,13 @@ export default function SelezioneIT() {
             padding: "10px 14px",
             borderRadius: 10,
             textDecoration: "none",
-            fontWeight: 700,
+            fontWeight: 800,
           }}
         >
           Vai al pagamento
         </a>
 
-        <Link
+        <a
           href="/"
           style={{
             border: "1px solid #ddd",
@@ -37,12 +31,12 @@ export default function SelezioneIT() {
             padding: "10px 14px",
             borderRadius: 10,
             textDecoration: "none",
-            fontWeight: 700,
+            fontWeight: 800,
           }}
         >
           Torna Home
-        </Link>
+        </a>
       </div>
-    </div>
+    </main>
   );
 }

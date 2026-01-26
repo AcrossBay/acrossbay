@@ -2,50 +2,86 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { useMemo } from "react";
+
+function getLocaleFromPath(pathname) {
+  // supporta: /en/..., oppure default IT senza prefisso
+  const seg = (pathname || "/").split("/").filter(Boolean)[0];
+  return seg === "en" ? "en" : "it";
+}
+
+function stripLocale(pathname) {
+  const parts = (pathname || "/").split("/").filter(Boolean);
+  if (parts[0] === "en") parts.shift();
+  return "/" + parts.join("/");
+}
+
+function withLocale(locale, path) {
+  // path deve iniziare con "/"
+  const clean = path.startsWith("/") ? path : `/${path}`;
+  return locale === "en" ? `/en${clean === "/" ? "" : clean}` : clean;
+}
 
 export default function Header() {
-  const pathname = usePathname();
+  const pathname = usePathname() || "/";
   const router = useRouter();
 
-  const isEn = pathname.startsWith("/en");
+  const locale = useMemo(() => getLocaleFromPath(pathname), [pathname]);
 
-  const switchTo = (lang) => {
-    if (lang === "en") {
-      router.push(pathname === "/" ? "/en" : `/en${pathname}`);
-    } else {
-      router.push(pathname.replace(/^\/en/, "") || "/");
-    }
-  };
+  const t = useMemo(() => {
+    return locale === "en"
+      ? { home: "Home", selection: "Selection", about: "About", contact: "Contact", privacy: "Privacy" }
+      : { home: "Home", selection: "Selezione", about: "About", contact: "Contact", privacy: "Privacy" };
+  }, [locale]);
+
+  // QUI decidi i percorsi reali delle pagine (non i testi).
+  // Se la tua "Selezione" è /discover invece di /selezione, cambia SOLO hrefSelection qui sotto.
+  const hrefHome = withLocale(locale, "/");
+  const hrefSelection = withLocale(locale, "/selezione");
+  const hrefAbout = withLocale(locale, "/about");
+  const hrefContact = withLocale(locale, "/contact");
+  const hrefPrivacy = withLocale(locale, "/privacy");
+
+  function switchLang(nextLocale) {
+    const base = stripLocale(pathname); // es: "/about" o "/selezione/xyz"
+    const nextPath = withLocale(nextLocale, base === "" ? "/" : base);
+    router.push(nextPath);
+  }
 
   return (
-    <header className="border-b">
-      <nav className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        <Link href={isEn ? "/en" : "/"} className="font-semibold">
+    <header className="w-full border-b border-gray-200 bg-white">
+      <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between gap-4">
+        <Link href={hrefHome} className="font-semibold text-lg">
           AcrossBay
         </Link>
 
-        <div className="flex gap-6 items-center">
-          <Link href={isEn ? "/en" : "/"}>Home</Link>
-          <Link href={isEn ? "/en/selezione" : "/selezione"}>Selezione</Link>
-          <Link href={isEn ? "/en/about" : "/about"}>About</Link>
-          <Link href={isEn ? "/en/contact" : "/contact"}>Contact</Link>
+        <nav className="flex items-center gap-4 text-sm text-gray-700">
+          <Link href={hrefHome} className="hover:underline">{t.home}</Link>
+          <Link href={hrefSelection} className="hover:underline">{t.selection}</Link>
+          <Link href={hrefAbout} className="hover:underline">{t.about}</Link>
+          <Link href={hrefContact} className="hover:underline">{t.contact}</Link>
+          <Link href={hrefPrivacy} className="hover:underline">{t.privacy}</Link>
+        </nav>
 
-          <div className="flex gap-2 ml-4">
-            <button
-              onClick={() => switchTo("it")}
-              className={!isEn ? "font-bold" : ""}
-            >
-              IT
-            </button>
-            <button
-              onClick={() => switchTo("en")}
-              className={isEn ? "font-bold" : ""}
-            >
-              EN
-            </button>
-          </div>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => switchLang("it")}
+            className={`px-2 py-1 rounded border text-sm ${locale === "it" ? "border-gray-900" : "border-gray-300"}`}
+            aria-label="Italiano"
+          >
+            IT
+          </button>
+          <button
+            type="button"
+            onClick={() => switchLang("en")}
+            className={`px-2 py-1 rounded border text-sm ${locale === "en" ? "border-gray-900" : "border-gray-300"}`}
+            aria-label="English"
+          >
+            EN
+          </button>
         </div>
-      </nav>
+      </div>
     </header>
   );
 }

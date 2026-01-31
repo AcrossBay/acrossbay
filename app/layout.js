@@ -3,6 +3,11 @@ export const metadata = {
   description: "AcrossBay",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -13,8 +18,20 @@ export default function RootLayout({ children }) {
           width: "100%",
           maxWidth: "100vw",
           overflowX: "hidden",
-          display: "flex",
-          justifyContent: "center",
         }}
       >
         <div
+          style={{
+            width: "100%",
+            maxWidth: 1200,
+            margin: "0 auto",
+            padding: "0 16px",
+            boxSizing: "border-box",
+          }}
+        >
+          {children}
+        </div>
+      </body>
+    </html>
+  );
+}

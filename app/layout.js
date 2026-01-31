@@ -20,17 +20,7 @@ export default function RootLayout({ children }) {
           overflowX: "hidden",
         }}
       >
-        <div
-          style={{
-            width: "100%",
-            maxWidth: "1200px",
-            margin: "0 auto",
-            padding: "0 16px",
-            boxSizing: "border-box",
-          }}
-        >
-          {children}
-        </div>
+        {children}
       </body>
     </html>
   );

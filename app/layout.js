@@ -6,7 +6,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
-    </html>
-  );
-}
+      <body
+        style={{
+          margin: 0,
+          padding: 0,
+          width: "100%",
+          maxWidth: "100vw",
+          overflowX: "hidden",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <div

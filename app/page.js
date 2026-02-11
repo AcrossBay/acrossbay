@@ -1,28 +1,3 @@
-export default function HomePage() {
-  return (
-    <main style={{ padding: "20px" }}>
-      <div style={{ display: "flex", justifyContent: "flex-end" }}>
-        <a
-          href="https://acrossbay-b2b-portal.vercel.app/login"
-          style={{
-            backgroundColor: "black",
-            color: "white",
-            padding: "10px 20px",
-            textDecoration: "none",
-            borderRadius: "4px",
-            fontSize: "14px",
-          }}
-        >
-          Area B2B
-        </a>
-      </div>
-
-      {/* QUI sotto resta tutto il resto del tuo sito */}
-      {/* Non cancellare i contenuti che avevi prima */}
-    </main>
-  );
-}
-
 export const dynamic = "force-dynamic";
 
 export default function HomePage() {
@@ -46,11 +21,27 @@ export default function HomePage() {
           boxSizing: "border-box",
         }}
       >
+        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+          <a
+            href="https://acrossbay-b2b-portal.vercel.app/login"
+            style={{
+              backgroundColor: "black",
+              color: "white",
+              padding: "10px 20px",
+              textDecoration: "none",
+              borderRadius: 4,
+              fontSize: 14,
+            }}
+          >
+            Area B2B
+          </a>
+        </div>
+
         <h1 style={{ marginTop: 0 }}>AcrossBay</h1>
         <p>Welcome.</p>
 
         <a
-          href="https://buy.stripe.com/bJe3cxd9M8VIDaa90v2kw00"
+          href="INSERISCI_QUI_IL_TUO_LINK_STRIPE"
           target="_blank"
           rel="noopener noreferrer"
           style={{

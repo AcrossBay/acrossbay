@@ -13,6 +13,27 @@ export default function HomePage() {
         justifyContent: "center",
       }}
     >
+      {/* B2B button overlay (does not affect layout) */}
+      <div style={{ position: "fixed", top: 16, right: 16, zIndex: 9999 }}>
+        <a
+          href="https://acrossbay-b2b-portal.vercel.app/login"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            backgroundColor: "black",
+            color: "white",
+            padding: "10px 16px",
+            textDecoration: "none",
+            borderRadius: 6,
+            fontSize: 14,
+            fontWeight: 600,
+            display: "inline-block",
+          }}
+        >
+          Area B2B
+        </a>
+      </div>
+
       <div
         style={{
           width: "100%",
@@ -21,22 +42,6 @@ export default function HomePage() {
           boxSizing: "border-box",
         }}
       >
-        <div style={{ display: "flex", justifyContent: "flex-end" }}>
-          <a
-            href="https://acrossbay-b2b-portal.vercel.app/login"
-            style={{
-              backgroundColor: "black",
-              color: "white",
-              padding: "10px 20px",
-              textDecoration: "none",
-              borderRadius: 4,
-              fontSize: 14,
-            }}
-          >
-            Area B2B
-          </a>
-        </div>
-
         <h1 style={{ marginTop: 0 }}>AcrossBay</h1>
         <p>Welcome.</p>
 

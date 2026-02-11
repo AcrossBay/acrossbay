@@ -1,3 +1,28 @@
+export default function HomePage() {
+  return (
+    <main style={{ padding: "20px" }}>
+      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        <a
+          href="https://acrossbay-b2b-portal.vercel.app/login"
+          style={{
+            backgroundColor: "black",
+            color: "white",
+            padding: "10px 20px",
+            textDecoration: "none",
+            borderRadius: "4px",
+            fontSize: "14px",
+          }}
+        >
+          Area B2B
+        </a>
+      </div>
+
+      {/* QUI sotto resta tutto il resto del tuo sito */}
+      {/* Non cancellare i contenuti che avevi prima */}
+    </main>
+  );
+}
+
 export const dynamic = "force-dynamic";
 
 export default function HomePage() {
